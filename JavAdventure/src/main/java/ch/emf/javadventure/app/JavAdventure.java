@@ -36,6 +36,9 @@ public class JavAdventure {
     public static void main(String[] args) {
 
         currentRoom = new int[]{0, 1, 0}; // start on ground floor, center room.
+        
+        
+        
 
         SwingUtilities.invokeLater(() -> {
             VintageGameView view = new VintageGameView();

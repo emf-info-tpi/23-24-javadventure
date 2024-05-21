@@ -33,7 +33,7 @@ public class VintageGameView extends JFrame implements IGameView {
     public VintageGameView() {
         // Setup base window
         setTitle("JavAdventure");
-        setSize(600, 600);
+        setSize(800, 800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
         setLayout(new GridBagLayout());
@@ -53,7 +53,7 @@ public class VintageGameView extends JFrame implements IGameView {
         }
 
         // Room map (top left)
-        map = createTextArea(18, 25, font);
+        map = createTextArea(30, 30, font);
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridheight = 2;  // Span 2 rows
