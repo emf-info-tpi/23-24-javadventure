@@ -67,10 +67,9 @@ public class JavAdventure {
 
             //view.drawRoomMap(room.getString("roomMap"));
             Room newRoom = new Room(room.getString("roomMap"));
-            
-            view.updateRoom(newRoom.getContent());
 
-            
+
+            /*
             for (RoomElement[] row : newRoom.getContent()) {
             for (RoomElement element : row) {
                 if (element == null) {
@@ -81,9 +80,7 @@ public class JavAdventure {
             }
             System.out.println();
 
-            }
-            
-            
+            }*/
             view.setRoomDescription(room.getString("roomDescription"));
             view.setMapLegend("ici sera la légende");
             view.setOutputText("informations supplémentaires");
@@ -95,12 +92,16 @@ public class JavAdventure {
                 String type = elementObject.getString("type");
                 int elementX = elementObject.getInt("x");
                 int elementY = elementObject.getInt("y");
-                //elements.add(new RoomElement(type, elementX, elementY)); // ajouter des monstres, portes etc
+                RoomElement r = new RoomElement();
+                //elements.add(r.createFrom(type, elementX, elementY)); // ajouter des monstres, portes etc
+                newRoom.placeRoomEntity(r.createFrom(type), elementX, elementY);
             }
-            
+
+            view.updateRoom(newRoom.getContent());
+
             //newRoom.placeRoomEntity(r, 0, 0)
             // Pour chacun des éléments dans la liste, on le dessinera sur la carte et si nécessaire dans la légende
-            view.setMapCharacter('ç', 5, 5);
+            //view.setMapCharacter('ç', 5, 5);
 
         } catch (IOException e) {
             e.printStackTrace();

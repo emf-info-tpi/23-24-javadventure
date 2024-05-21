@@ -10,26 +10,35 @@ import ch.emf.javadventure.models.IElement;
  *
  * @author schwandern
  */
-public class RoomElement implements IElement{
-    
+public class RoomElement implements IElement {
+
     private char texture;
-    
-    
 
     public RoomElement(char texture) {
         this.texture = texture;
-        
+
+    }
+
+    public RoomElement() {
+    }
+    
+    
+
+    public static RoomElement createFrom(String type) {
+        RoomElement res = null;
+        switch (type) {
+            case "MONSTER" ->
+                res = new Enemy();
+            case "SWORD" ->
+                res = new Item();
+        }
+        return res;
     }
 
     @Override
     public String toString() {
         return texture + "";
     }
-
-    
-    
-    
-    
 
     @Override
     public boolean isColliding(int x, int y) {
