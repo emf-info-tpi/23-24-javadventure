@@ -1,0 +1,36 @@
+
+{
+    "0": {
+        "0": {
+            "0": {
+                "roomMap": "                         \n#########################\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#########      ##########\n        #      #          ",
+                "roomDescription": "This is the south room.",
+                "elements": [
+                    {
+                        "type": "SWORD",
+                        "x": 5,
+                        "y": 5
+                    },
+                    {
+                        "type": "MONSTER",
+                        "x": 10,
+                        "y": 3
+                    }
+                ]
+            }
+        },
+        "1": {
+            "0": {
+                "roomMap": "        #      #         \n#########      ##########\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#########################\n                          ",
+                "roomDescription": "This is the south room.",
+                "elements": [
+                    {
+                        "type": "MONSTER",
+                        "x": 2,
+                        "y": 2
+                    }
+                ]
+            }
+        }
+    }
+}
