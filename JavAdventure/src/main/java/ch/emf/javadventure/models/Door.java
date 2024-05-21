@@ -8,14 +8,10 @@ package ch.emf.javadventure.models;
  *
  * @author schwandern
  */
-public class Player extends RoomElement{
-
-  
-
-    public Player() {
-        super('C');
+public class Door extends RoomElement{
+    
+    public Door() {
+        super(' ');
     }
-    
-    
     
 }

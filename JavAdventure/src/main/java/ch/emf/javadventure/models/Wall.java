@@ -10,8 +10,8 @@ package ch.emf.javadventure.models;
  */
 public class Wall extends RoomElement{
 
-    public Wall(int x, int y) {
-        super('#', x, y);
+    public Wall() {
+        super('#');
     }
     
     

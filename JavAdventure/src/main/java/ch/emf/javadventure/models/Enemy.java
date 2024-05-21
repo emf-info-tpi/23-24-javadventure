@@ -11,8 +11,8 @@ package ch.emf.javadventure.models;
 public class Enemy extends RoomElement{
     
   
-    public Enemy(int x, int y) {
-        super('E', x, y);
+    public Enemy() {
+        super('E');
     }
     
     

@@ -10,8 +10,16 @@ package ch.emf.javadventure.models;
  */
 public class Item extends RoomElement {
     
-    public Item(int x, int y) {
-        super('I', x, y);
+    public Item() {
+        super('I');
     }
+    
+    private String name;
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    
     
 }

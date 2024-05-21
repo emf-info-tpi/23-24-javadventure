@@ -18,26 +18,66 @@ public class Room {
 
     private RoomElement[][] content;
 
-    public Room(int x, int y) {
-        content = new RoomElement[x][y];
-        
-        for (int i = 0; i < x; i++) {
-            for (int j = 0; j < y; j++) {
-                if (i == 0 || i == x - 1 || j == 0 || j == y - 1) {
-                    placeRoomEntity(new Wall(i, j), i, j);
+    public Room(String room) {
+        // Split the input string by new lines to get each row
+        String[] lines = room.split("\n");
+
+        // Determine the dimensions of the room
+        int numRows = lines.length;
+        int numCols = lines[0].length();
+
+        // Initialize the 2D array of RoomElement
+        content = new RoomElement[numRows][numCols];
+
+        // Fill the array with RoomElement objects
+        for (int i = 0; i < numRows; i++) {
+            for (int j = 0; j < numCols; j++) {
+                char ch = lines[i].charAt(j);
+                if (ch == '#') {
+                    content[i][j] = new Wall();
+                } else if (ch == ' ') {
+                    if (isDoor(i, j, lines)) {
+                        content[i][j] = new Door();
+                    } else {
+                        content[i][j] = null; // Space is considered null
+                    }
                 }
             }
         }
     }
-    
-    public int[] getPositionOfRoomEntity(RoomElement r) {
-         return new int[] { r.getX(), r.getY() };
+
+    private boolean isDoor(int i, int j, String[] lines) {
+        int numRows = lines.length;
+        int numCols = lines[0].length();
+
+        // A door is a space in the wall in the first or last row
+        if ((i == 0 || i == numRows - 1) && lines[i].charAt(j) == ' ') {
+            return true;
+        }
+
+        // A door is a space in the wall in the first or last column
+        if ((j == 0 || j == numCols - 1) && lines[i].charAt(j) == ' ') {
+            return true;
+        }
+
+        return false;
     }
-    
+
+    public int[] getPositionOfRoomEntity(RoomElement r) {
+        for (int i = 0; i < content.length; i++) {
+            for (int j = 0; j < content[0].length; j++) {
+                if (r.equals(content[i][j])) {
+                    return new int[]{i, j};
+                }
+            }
+        }
+        return null;
+    }
+
     public boolean checkBoundary(int[] pos) {
         return (pos[0] >= 0 && pos[0] < content.length) && (pos[1] >= 0 && pos[1] < content[0].length);
     }
-    
+
     public int[] getSize() {
         return new int[]{content.length, content[0].length};
     }
@@ -46,11 +86,9 @@ public class Room {
         content[x][y] = r;
         return this.content;
     }
-    
-  
 
     public RoomElement[][] moveRoomEntity(RoomElement r, int x, int y) {
-        if(this.content[x][y] == null) {
+        if (this.content[x][y] == null) {
             int[] lastPos = getPositionOfRoomEntity(r);
             content[x][y] = r;
             content[lastPos[0]][lastPos[1]] = null;
@@ -61,12 +99,5 @@ public class Room {
     public RoomElement[][] getContent() {
         return content;
     }
-    
-    
-    
-    
 
-   
-    
-    
 }

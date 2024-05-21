@@ -4,6 +4,8 @@
  */
 package ch.emf.javadventure.views;
 
+import ch.emf.javadventure.ctrl.GameCtrl;
+import ch.emf.javadventure.models.RoomElement;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ComponentAdapter;
@@ -26,6 +28,9 @@ public class VintageGameView extends JFrame implements IGameView {
     private JTextArea mapLegend;
     private JTextArea outputText;
     private JTextField userInput;
+    private GameCtrl gamectrl;
+
+   
 
     /**
      * Constructs a new VintageGameView window and initializes its components.
@@ -119,6 +124,20 @@ public class VintageGameView extends JFrame implements IGameView {
             e.printStackTrace();
         }
     }
+    
+    public void updateRoom(RoomElement[][] r) {
+        
+        
+        String map = "";
+        for (int j = 0; j < r[0].length; j++) {
+            for (int i = 0; i < r.length; i++) {
+                map += r[i][j] != null ? r[i][j] : " ";
+            }
+            map += "\n";
+        }
+        this.map.setText(map);
+    }
+    
 
     @Override
     public void setRoomDescription(String description) {
@@ -162,5 +181,10 @@ public class VintageGameView extends JFrame implements IGameView {
         textArea.setWrapStyleWord(true);
         textArea.setEditable(false);
         return textArea;
+    }
+    
+    
+     public void setGamectrl(GameCtrl gamectrl) {
+        this.gamectrl = gamectrl;
     }
 }

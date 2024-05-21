@@ -13,14 +13,12 @@ import ch.emf.javadventure.models.IElement;
 public class RoomElement implements IElement{
     
     private char texture;
-    private int x;
-    private int y;
+    
     
 
-    public RoomElement(char texture, int x, int y) {
+    public RoomElement(char texture) {
         this.texture = texture;
-        this.x = x;
-        this.y = y;
+        
     }
 
     @Override
@@ -28,13 +26,7 @@ public class RoomElement implements IElement{
         return texture + "";
     }
 
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
+    
     
     
     
