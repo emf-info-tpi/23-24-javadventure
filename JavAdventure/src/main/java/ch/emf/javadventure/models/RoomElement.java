@@ -22,23 +22,24 @@ public class RoomElement implements IElement {
 
     public RoomElement() {
     }
-    
-   
+
     public static RoomElement createFrom(String type) {
         RoomElement res = null;
         switch (type) {
-            case "MONSTRE" ->
-                res = new Enemy();
+            case "MONSTRE niv1" ->
+                res = new Enemy(1);
+            case "MONSTRE niv2" ->
+                res = new Enemy(2);
             case "EPEE" ->
                 res = new Item(type);
             case "HACHE" ->
                 res = new Item(type);
             case "BOUCLIER" ->
-                res = new Item(type);       
+                res = new Item(type);
         }
         return res;
     }
-    
+
     public void collide(GameCtrl ctrl) {
     }
 

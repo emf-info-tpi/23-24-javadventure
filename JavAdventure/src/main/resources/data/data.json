@@ -12,7 +12,7 @@
                         "y": 10
                     },
                     {
-                        "type": "MONSTRE",
+                        "type": "MONSTRE niv1",
                         "x": 5,
                         "y": 7
                     }
@@ -25,7 +25,7 @@
                 "roomDescription": "Ceci est la salle sud",
                 "elements": [
                     {
-                        "type": "MONSTRE",
+                        "type": "MONSTRE niv2",
                         "x": 2,
                         "y": 2
                     },

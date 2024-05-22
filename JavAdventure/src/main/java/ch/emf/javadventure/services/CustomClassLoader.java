@@ -1,4 +1,4 @@
-package services;
+package ch.emf.javadventure.services;
 
 
 import java.io.File;

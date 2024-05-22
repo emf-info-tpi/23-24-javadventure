@@ -13,13 +13,17 @@ import ch.emf.javadventure.ctrl.GameCtrl;
 public class Enemy extends RoomElement{
     
   
-    public Enemy() {
+    private int dificulte;
+    
+    public Enemy(int dificulte) {
         super('E');
+        this.dificulte = dificulte;
     }
     
      @Override
     public void collide(GameCtrl source) {
         System.out.println("Aie y'a un ennemi !!");
+        source.runCombat(dificulte);
     }
     
 }

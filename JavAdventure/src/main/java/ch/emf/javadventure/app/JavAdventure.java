@@ -20,7 +20,7 @@ import org.json.JSONArray;
 
 import org.json.JSONObject;
 import org.json.JSONTokener;
-import services.JsonLoader;
+import ch.emf.javadventure.services.JsonLoader;
 
 /**
  * The JavAdventure class serves as the entry point for the JavAdventure
