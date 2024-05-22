@@ -26,5 +26,7 @@ public interface IGameCtrl {
     public void updateRoom();
 
     public void loadJsonData(IGameView view, IGameCtrl gameCtrl);
+    
+    public void AddRoom(Room room);
 
 }

@@ -261,7 +261,7 @@ public class GameCtrl implements IGameCtrl {
 
     public void setPlayer(Player player) {
         this.player = player;
-        currentRoom.placeRoomEntity(player, 3, 3);
+        currentRoom.placeRoomEntity(player, 14, 10);
     }
 
     public ch.emf.javadventure.models.Room getCurrentRoom() {
@@ -281,6 +281,11 @@ public class GameCtrl implements IGameCtrl {
         gameView.updateRoom(currentRoom.getContent());
         gameView.setRoomDescription(currentRoom.getRoomDescription());
 
+    }
+
+    public void AddRoom(Room room) {
+        String roomKey = getRoomKey(currentRoomNumber);
+        rooms.put(roomKey, room);
     }
 
     public void loadJsonData(IGameView view, IGameCtrl gameCtrl) {
