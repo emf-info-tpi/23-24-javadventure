@@ -4,7 +4,7 @@
         "0": {
             "0": {
                 "roomMap": "                         \n#########################\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#########      ##########\n        #      #          ",
-                "roomDescription": "This is the south room.",
+                "roomDescription": "ceci est la salle nord",
                 "elements": [
                     {
                         "type": "SWORD",
@@ -22,7 +22,7 @@
         "1": {
             "0": {
                 "roomMap": "        #      #         \n#########      ##########\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#########################\n                          ",
-                "roomDescription": "This is the south room.",
+                "roomDescription": "Ceci est la salle sud",
                 "elements": [
                     {
                         "type": "MONSTER",

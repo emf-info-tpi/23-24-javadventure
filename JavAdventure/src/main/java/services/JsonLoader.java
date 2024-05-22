@@ -43,10 +43,10 @@ public class JsonLoader {
                     .getJSONObject(String.valueOf(currentRoomNumber[2]));
 
             //view.drawRoomMap(room.getString("roomMap"));
-            Room newRoom = new Room(room.getString("roomMap"));
+            Room newRoom = new Room(room.getString("roomMap"),room.getString("roomDescription"));
             
             
-            view.setRoomDescription(room.getString("roomDescription"));
+            //view.setRoomDescription(room.getString("roomDescription"));
             view.setMapLegend("ici sera la légende");
             view.setOutputText("informations supplémentaires");
 
@@ -88,7 +88,7 @@ public class JsonLoader {
                     .getJSONObject(String.valueOf(currentRoomNumber[2]));
 
             //view.drawRoomMap(room.getString("roomMap"));
-            Room newRoom = new Room(room.getString("roomMap"));
+            Room newRoom = new Room(room.getString("roomMap"),room.getString("roomDescription"));
             
             
             //view.setRoomDescription(room.getString("roomDescription"));

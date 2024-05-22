@@ -5,6 +5,7 @@ ch\emf\javadventure\models\Enemy.class
 services\CustomClassLoader.class
 ch\emf\javadventure\models\Room.class
 services\JsonLoader.class
+ch\emf\javadventure\ctrl\GameCtrl$1.class
 ch\emf\javadventure\views\VintageGameView$2.class
 ch\emf\javadventure\models\Player.class
 ch\emf\javadventure\ctrl\GameCtrl.class

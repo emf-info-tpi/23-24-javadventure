@@ -12,8 +12,9 @@ import ch.emf.javadventure.ctrl.GameCtrl;
  */
 public class Item extends RoomElement {
     
-    public Item() {
+    public Item(String name) {
         super('I');
+        this.name = name;
     }
     
     private String name;

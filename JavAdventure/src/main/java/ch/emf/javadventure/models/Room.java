@@ -17,8 +17,10 @@ import java.util.Optional;
 public class Room {
 
     private RoomElement[][] content;
+    private String roomDescription;
 
-    public Room(String room) {
+    public Room(String room, String roomDescription) {
+        this.roomDescription = roomDescription;
         // Split the input string by new lines to get each row
         String[] lines = room.split("\n");
 
@@ -49,8 +51,7 @@ public class Room {
 
     public Room() {
     }
-    
-    
+
     private Door.Direction isDoor(int i, int j, String[] lines) {
         int numRows = lines.length;
         int numCols = lines[0].length();
@@ -101,14 +102,24 @@ public class Room {
         return this.content;
     }
 
+    public RoomElement[][] removeRoomElement(RoomElement r) {
+        int[] pos = getPositionOfRoomElement(r);
+        if (pos != null) {
+            content[pos[0]][pos[1]] = null;
+        }
+        return this.content;
+    }
+
     public RoomElement[][] getContent() {
         return content;
     }
-    
-    public boolean areColiding(RoomElement element1, RoomElement element2){
+
+    public boolean areColiding(RoomElement element1, RoomElement element2) {
         int[] coord1 = getPositionOfRoomElement(element1);
         int[] coord2 = getPositionOfRoomElement(element2);
         
+        if(coord1 == null || coord2 == null) return false;
+
         if (coord1.length != 2 || coord2.length != 2) {
             throw new IllegalArgumentException("Both arrays must contain exactly two elements.");
         }
@@ -122,10 +133,10 @@ public class Room {
         int deltaY = Math.abs(y1 - y2);
 
         // Coordinates are next to each other if they are 1 unit apart in either the x or y direction, or diagonally
-         return (deltaX <= 1 && deltaY <= 1) && !(deltaX == 0 && deltaY == 0);
-        
+        return (deltaX <= 1 && deltaY <= 1) && !(deltaX == 0 && deltaY == 0);
+
     }
-    
+
     public List<RoomElement> getAllNonWallElements() {
         List<RoomElement> nonWallElements = new ArrayList<>();
         for (int i = 0; i < content.length; i++) {
@@ -138,5 +149,14 @@ public class Room {
         }
         return nonWallElements;
     }
+
+    public String getRoomDescription() {
+        System.out.println(roomDescription);
+        return roomDescription;
+        
+    }
+    
+    
+    
 
 }

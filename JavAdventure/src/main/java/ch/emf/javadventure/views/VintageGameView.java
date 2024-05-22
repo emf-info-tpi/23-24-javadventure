@@ -149,6 +149,7 @@ public class VintageGameView extends JFrame implements IGameView {
             map += "\n";
         }
         this.map.setText(map);
+        
     }
     
 

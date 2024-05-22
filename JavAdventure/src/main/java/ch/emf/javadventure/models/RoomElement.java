@@ -27,10 +27,14 @@ public class RoomElement implements IElement {
     public static RoomElement createFrom(String type) {
         RoomElement res = null;
         switch (type) {
-            case "MONSTER" ->
+            case "MONSTRE" ->
                 res = new Enemy();
-            case "SWORD" ->
-                res = new Item();
+            case "EPEE" ->
+                res = new Item(type);
+            case "HACHE" ->
+                res = new Item(type);
+            case "BOUCLIER" ->
+                res = new Item(type);       
         }
         return res;
     }

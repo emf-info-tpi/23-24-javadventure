@@ -5,13 +5,16 @@
 package ch.emf.javadventure.ctrl;
 
 import ch.emf.javadventure.models.Door;
+import ch.emf.javadventure.models.Door.Direction;
 import ch.emf.javadventure.models.Enemy;
 import ch.emf.javadventure.models.Item;
 import ch.emf.javadventure.models.Player;
 import ch.emf.javadventure.models.Room;
 import ch.emf.javadventure.models.RoomElement;
 import ch.emf.javadventure.views.IGameView;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import services.JsonLoader;
 
 /**
@@ -25,11 +28,13 @@ public class GameCtrl implements IGameCtrl {
     private Room currentRoom;
     private IGameView gameView;
     private JsonLoader jsonLoader;
-    private int[] currentRoomNumber = new int[]{0, 0, 0};
+    private int[] currentRoomNumber;
+    private Map<String, Room> rooms;
 
     public GameCtrl() {
         jsonLoader = new JsonLoader();
-
+        currentRoomNumber = new int[]{0, 0, 0};
+        rooms = new HashMap<>();
     }
 
     public RoomElement[][] move(char key) {
@@ -63,15 +68,80 @@ public class GameCtrl implements IGameCtrl {
         }
     }
 
-    public void navigateRooms() {
+    public void navigateRooms(Enum e) {
+        if (e instanceof Direction) {
+            Direction direction = (Direction) e;
+            int[] nextRoomNumber = getNextRoomNumber(currentRoomNumber, direction);
 
-        Room r = new Room();
-        r = jsonLoader.loadJsonDataRoom(new int[]{0, 1, 0});
-        if (r != null) {
-            currentRoom = r;
-            currentRoom.placeRoomEntity(player, 6, 6);
-            updateRoom();
+            String roomKey = getRoomKey(nextRoomNumber);
+            Room nextRoom;
+
+            if (rooms.containsKey(roomKey)) {
+                nextRoom = rooms.get(roomKey);
+            } else {
+                nextRoom = jsonLoader.loadJsonDataRoom(nextRoomNumber);
+                rooms.put(roomKey, nextRoom);
+            }
+
+            if (nextRoom != null) {
+                // Remove player from current room
+                currentRoom.removeRoomElement(player);
+
+                // Update current room and player position
+                currentRoom = nextRoom;
+                currentRoomNumber = nextRoomNumber;
+                placePlayerNearDoor(direction); // Place the player near the door
+
+                updateRoom();
+                gameView.setRoomDescription(currentRoom.getRoomDescription());
+            }
         }
+    }
+
+    private void placePlayerNearDoor(Direction direction) {
+        int playerX = 6; // Default positions, these might need to be adjusted based on your room size
+        int playerY = 6;
+        int[] roomSize = currentRoom.getSize();
+
+        switch (direction) {
+            case TOP:
+                playerX = roomSize[0] - 2; // Place the player near the bottom of the room
+                playerY = roomSize[1] / 2; // Center horizontally
+                break;
+            case BOTTOM:
+                playerX = 1; // Place the player near the top of the room
+                playerY = roomSize[1] / 2; // Center horizontally
+                break;
+            case LEFT:
+                playerX = roomSize[0] / 2; // Center vertically
+                playerY = roomSize[1] - 2; // Place the player near the right side of the room
+                break;
+            case RIGHT:
+                playerX = roomSize[0] / 2; // Center vertically
+                playerY = 1; // Place the player near the left side of the room
+                break;
+        }
+
+        currentRoom.placeRoomEntity(player, playerX, playerY);
+    }
+
+    private int[] getNextRoomNumber(int[] currentRoomNumber, Direction direction) {
+        int[] nextRoomNumber = currentRoomNumber.clone();
+        switch (direction) {
+            case TOP ->
+                nextRoomNumber[1]--;
+            case BOTTOM ->
+                nextRoomNumber[1]++;
+            case LEFT ->
+                nextRoomNumber[2]--;
+            case RIGHT ->
+                nextRoomNumber[2]++;
+        }
+        return nextRoomNumber;
+    }
+
+    private String getRoomKey(int[] roomNumber) {
+        return roomNumber[0] + "_" + roomNumber[1] + "_" + roomNumber[2];
     }
 
     public Player getPlayer() {
@@ -98,6 +168,8 @@ public class GameCtrl implements IGameCtrl {
 
     public void updateRoom() {
         gameView.updateRoom(currentRoom.getContent());
+        gameView.setRoomDescription(currentRoom.getRoomDescription());
+
     }
 
     public void loadJsonData(IGameView view, IGameCtrl gameCtrl) {
