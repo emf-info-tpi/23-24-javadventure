@@ -66,6 +66,7 @@ public class JsonLoader {
             Player player = new Player();
             gameCtrl.setCurrentRoom(newRoom);
             gameCtrl.setPlayer(player);
+            gameCtrl.updateRoom();
 
             //newRoom.placeRoomEntity(r, 0, 0)
             // Pour chacun des éléments dans la liste, on le dessinera sur la carte et si nécessaire dans la légende

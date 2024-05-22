@@ -11,6 +11,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.io.InputStream;
 import javax.swing.border.LineBorder;
@@ -64,6 +66,15 @@ public class VintageGameView extends JFrame implements IGameView {
         gbc.gridy = 0;
         gbc.gridheight = 2;  // Span 2 rows
         add(map, gbc);
+        
+         map.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                if (gamectrl != null) {
+                    updateRoom(gamectrl.move(e.getKeyChar()));
+                }
+            }
+        });
 
         // Room description panel (bottom-left)
         roomDescription = createTextArea(6, 25, font);

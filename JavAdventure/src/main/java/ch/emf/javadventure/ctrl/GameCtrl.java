@@ -13,16 +13,12 @@ import ch.emf.javadventure.views.IGameView;
  *
  * @author schwandern
  */
-public class GameCtrl implements IGameCtrl{
-    
+public class GameCtrl implements IGameCtrl {
+
     private Player player;
     private Room currentRoom;
     private IGameView gameView;
-    
-    
-   
-    
-    
+
     public RoomElement[][] move(char key) {
         int[] pos = currentRoom.getPositionOfRoomElement(player);
         int[] nextPos = new int[]{pos[0], pos[1]};
@@ -57,16 +53,15 @@ public class GameCtrl implements IGameCtrl{
 
     public void setCurrentRoom(Room currentRoom) {
         this.currentRoom = currentRoom;
-        gameView.updateRoom(currentRoom.getContent());
+
     }
 
     public void setGameView(IGameView gameView) {
         this.gameView = gameView;
     }
-    
-    
-    
-    
-    
-    
+
+    public void updateRoom() {
+        gameView.updateRoom(currentRoom.getContent());
+    }
+
 }

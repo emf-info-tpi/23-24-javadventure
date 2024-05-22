@@ -25,6 +25,8 @@ public RoomElement[][] move(char key);
 
 public void setCurrentRoom(Room currentRoom);
 
+ public void updateRoom();
+
     
 }
 
