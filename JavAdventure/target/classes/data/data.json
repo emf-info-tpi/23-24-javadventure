@@ -7,12 +7,12 @@
                 "roomDescription": "ceci est la salle nord",
                 "elements": [
                     {
-                        "type": "SWORD",
+                        "type": "EPEE",
                         "x": 10,
                         "y": 10
                     },
                     {
-                        "type": "MONSTER",
+                        "type": "MONSTRE",
                         "x": 5,
                         "y": 7
                     }
@@ -25,9 +25,14 @@
                 "roomDescription": "Ceci est la salle sud",
                 "elements": [
                     {
-                        "type": "MONSTER",
+                        "type": "MONSTRE",
                         "x": 2,
                         "y": 2
+                    },
+                    {
+                        "type": "HACHE",
+                        "x": 5,
+                        "y": 7
                     }
                 ]
             }

@@ -26,6 +26,7 @@ public class Item extends RoomElement {
     @Override
     public void collide(GameCtrl source) {
         System.out.println("ITEM !!");
+        source.showItemDesc("vous avez trouvé :"+name.toLowerCase());
     }
     
 }

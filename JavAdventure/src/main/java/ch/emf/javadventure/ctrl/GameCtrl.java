@@ -30,13 +30,13 @@ public class GameCtrl implements IGameCtrl {
     private JsonLoader jsonLoader;
     private int[] currentRoomNumber;
     private Map<String, Room> rooms;
-
+    
     public GameCtrl() {
         jsonLoader = new JsonLoader();
         currentRoomNumber = new int[]{0, 0, 0};
         rooms = new HashMap<>();
     }
-
+    
     public RoomElement[][] move(char key) {
         int[] pos = currentRoom.getPositionOfRoomElement(player);
         int[] nextPos = new int[]{pos[0], pos[1]};
@@ -50,39 +50,48 @@ public class GameCtrl implements IGameCtrl {
             case 'd' ->
                 nextPos[1]++;
         }
-
+        
         boolean validPos = currentRoom.checkBoundary(nextPos);
         System.out.println("Valid: " + validPos + " next:" + nextPos[0] + ", " + nextPos[1] + " pos:" + pos[0] + ", " + pos[1]);
         RoomElement[][] moveRoomEntity = this.currentRoom.moveRoomEntity(this.player, (validPos ? nextPos[0] : pos[0]), (validPos ? nextPos[1] : pos[1]));
         colisionDetection();
         return moveRoomEntity;
-
+        
     }
-
+    
     private void colisionDetection() {
+        boolean detecte = false;
         List<RoomElement> elements = currentRoom.getAllNonWallElements();
         for (RoomElement element : elements) {
             if (currentRoom.areColiding(player, element)) {
                 element.collide(this);
+                detecte = true;
             }
+        }if (!detecte) {
+            showItemDesc("");
+            
         }
     }
-
+    
+    public void showItemDesc(String desc) {
+        gameView.setOutputText(desc);
+    }
+    
     public void navigateRooms(Enum e) {
         if (e instanceof Direction) {
             Direction direction = (Direction) e;
             int[] nextRoomNumber = getNextRoomNumber(currentRoomNumber, direction);
-
+            
             String roomKey = getRoomKey(nextRoomNumber);
             Room nextRoom;
-
+            
             if (rooms.containsKey(roomKey)) {
                 nextRoom = rooms.get(roomKey);
             } else {
                 nextRoom = jsonLoader.loadJsonDataRoom(nextRoomNumber);
                 rooms.put(roomKey, nextRoom);
             }
-
+            
             if (nextRoom != null) {
                 // Remove player from current room
                 currentRoom.removeRoomElement(player);
@@ -97,12 +106,12 @@ public class GameCtrl implements IGameCtrl {
             }
         }
     }
-
+    
     private void placePlayerNearDoor(Direction direction) {
         int playerX = 6; // Default positions, these might need to be adjusted based on your room size
         int playerY = 6;
         int[] roomSize = currentRoom.getSize();
-
+        
         switch (direction) {
             case TOP:
                 playerX = roomSize[0] - 2; // Place the player near the bottom of the room
@@ -121,10 +130,10 @@ public class GameCtrl implements IGameCtrl {
                 playerY = 1; // Place the player near the left side of the room
                 break;
         }
-
+        
         currentRoom.placeRoomEntity(player, playerX, playerY);
     }
-
+    
     private int[] getNextRoomNumber(int[] currentRoomNumber, Direction direction) {
         int[] nextRoomNumber = currentRoomNumber.clone();
         switch (direction) {
@@ -139,43 +148,43 @@ public class GameCtrl implements IGameCtrl {
         }
         return nextRoomNumber;
     }
-
+    
     private String getRoomKey(int[] roomNumber) {
         return roomNumber[0] + "_" + roomNumber[1] + "_" + roomNumber[2];
     }
-
+    
     public Player getPlayer() {
         return player;
     }
-
+    
     public void setPlayer(Player player) {
         this.player = player;
         currentRoom.placeRoomEntity(player, 3, 3);
     }
-
+    
     public ch.emf.javadventure.models.Room getCurrentRoom() {
         return currentRoom;
     }
-
+    
     public void setCurrentRoom(ch.emf.javadventure.models.Room currentRoom) {
         this.currentRoom = currentRoom;
-
+        
     }
-
+    
     public void setGameView(IGameView gameView) {
         this.gameView = gameView;
     }
-
+    
     public void updateRoom() {
         gameView.updateRoom(currentRoom.getContent());
         gameView.setRoomDescription(currentRoom.getRoomDescription());
-
+        
     }
-
+    
     public void loadJsonData(IGameView view, IGameCtrl gameCtrl) {
-
+        
         JsonLoader.loadJsonData(view, gameCtrl, currentRoomNumber);
-
+        
     }
-
+    
 }
