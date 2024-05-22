@@ -32,7 +32,7 @@ import services.JsonLoader;
  */
 public class JavAdventure {
 
-    public static int[] currentRoom;
+    
     
 
     /**
@@ -43,16 +43,17 @@ public class JavAdventure {
      */
     public static void main(String[] args) {
 
-        currentRoom = new int[]{0, 0, 0}; // start on ground floor, center room.
+        
         IGameView view = new VintageGameView();
         IGameCtrl gameCtrl = new GameCtrl();
-        JsonLoader jsonLoader = new JsonLoader();
+        
         view.setGamectrl(gameCtrl);
         gameCtrl.setGameView(view);
         
 
         SwingUtilities.invokeLater(() -> {
-            jsonLoader.loadJsonData(view, gameCtrl);
+            gameCtrl.loadJsonData(view, gameCtrl);
+            //jsonLoader.loadJsonData(view, gameCtrl);
         });
     }
 

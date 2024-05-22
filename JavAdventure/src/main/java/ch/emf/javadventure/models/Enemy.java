@@ -4,6 +4,8 @@
  */
 package ch.emf.javadventure.models;
 
+import ch.emf.javadventure.ctrl.GameCtrl;
+
 /**
  *
  * @author schwandern
@@ -15,5 +17,9 @@ public class Enemy extends RoomElement{
         super('E');
     }
     
+     @Override
+    public void collide(GameCtrl source) {
+        System.out.println("Aie y'a un ennemi !!");
+    }
     
 }

@@ -5,7 +5,6 @@
 package services;
 
 import ch.emf.javadventure.app.JavAdventure;
-import static ch.emf.javadventure.app.JavAdventure.currentRoom;
 import ch.emf.javadventure.ctrl.IGameCtrl;
 import ch.emf.javadventure.models.Player;
 import ch.emf.javadventure.models.Room;
@@ -32,16 +31,16 @@ public class JsonLoader {
      *
      * @param view the game view to be updated with the room data
      */
-    public static void loadJsonData(IGameView view, IGameCtrl gameCtrl) {
+    public static void loadJsonData(IGameView view, IGameCtrl gameCtrl, int[] currentRoomNumber) {
         try (InputStream is = JavAdventure.class.getResourceAsStream("/data/data.json")) {
             if (is == null) {
                 throw new IOException("Resource not found: /data/data.json");
             }
 
             JSONObject jsonObject = new JSONObject(new JSONTokener(is));
-            JSONObject room = jsonObject.getJSONObject(String.valueOf(currentRoom[0]))
-                    .getJSONObject(String.valueOf(currentRoom[1]))
-                    .getJSONObject(String.valueOf(currentRoom[2]));
+            JSONObject room = jsonObject.getJSONObject(String.valueOf(currentRoomNumber[0]))
+                    .getJSONObject(String.valueOf(currentRoomNumber[1]))
+                    .getJSONObject(String.valueOf(currentRoomNumber[2]));
 
             //view.drawRoomMap(room.getString("roomMap"));
             Room newRoom = new Room(room.getString("roomMap"));
@@ -52,14 +51,13 @@ public class JsonLoader {
             view.setOutputText("informations supplémentaires");
 
             JSONArray elementsArray = room.getJSONArray("elements");
-            List<RoomElement> elements = new ArrayList<>();
+            
             for (int i = 0; i < elementsArray.length(); i++) {
                 JSONObject elementObject = elementsArray.getJSONObject(i);
                 String type = elementObject.getString("type");
                 int elementX = elementObject.getInt("x");
                 int elementY = elementObject.getInt("y");
                 RoomElement r = new RoomElement();
-                //elements.add(r.createFrom(type, elementX, elementY)); // ajouter des monstres, portes etc
                 newRoom.placeRoomEntity(r.createFrom(type), elementX, elementY);
             }
 
@@ -74,6 +72,49 @@ public class JsonLoader {
 
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+    
+    
+    public Room loadJsonDataRoom(int[] currentRoomNumber) {
+        try (InputStream is = JavAdventure.class.getResourceAsStream("/data/data.json")) {
+            if (is == null) {
+                throw new IOException("Resource not found: /data/data.json");
+            }
+
+            JSONObject jsonObject = new JSONObject(new JSONTokener(is));
+            JSONObject room = jsonObject.getJSONObject(String.valueOf(currentRoomNumber[0]))
+                    .getJSONObject(String.valueOf(currentRoomNumber[1]))
+                    .getJSONObject(String.valueOf(currentRoomNumber[2]));
+
+            //view.drawRoomMap(room.getString("roomMap"));
+            Room newRoom = new Room(room.getString("roomMap"));
+            
+            
+            //view.setRoomDescription(room.getString("roomDescription"));
+            //view.setMapLegend("ici sera la légende");
+            //view.setOutputText("informations supplémentaires");
+
+            JSONArray elementsArray = room.getJSONArray("elements");
+            
+            for (int i = 0; i < elementsArray.length(); i++) {
+                JSONObject elementObject = elementsArray.getJSONObject(i);
+                String type = elementObject.getString("type");
+                int elementX = elementObject.getInt("x");
+                int elementY = elementObject.getInt("y");
+                RoomElement r = new RoomElement();
+                newRoom.placeRoomEntity(r.createFrom(type), elementX, elementY);
+            }
+
+            return newRoom;
+
+            //newRoom.placeRoomEntity(r, 0, 0)
+            // Pour chacun des éléments dans la liste, on le dessinera sur la carte et si nécessaire dans la légende
+            //view.setMapCharacter('ç', 5, 5);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
         }
     }
     

@@ -1,4 +1,5 @@
 ch\emf\javadventure\ctrl\IGameCtrl.class
+ch\emf\javadventure\models\Door$Direction.class
 ch\emf\javadventure\models\Wall.class
 ch\emf\javadventure\models\Enemy.class
 services\CustomClassLoader.class

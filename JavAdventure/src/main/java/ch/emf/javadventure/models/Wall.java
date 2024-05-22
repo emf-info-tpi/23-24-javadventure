@@ -14,6 +14,6 @@ public class Wall extends RoomElement{
         super('#');
     }
     
-    
+   
     
 }

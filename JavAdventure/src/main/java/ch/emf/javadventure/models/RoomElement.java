@@ -4,6 +4,7 @@
  */
 package ch.emf.javadventure.models;
 
+import ch.emf.javadventure.ctrl.GameCtrl;
 import ch.emf.javadventure.models.IElement;
 
 /**
@@ -32,6 +33,9 @@ public class RoomElement implements IElement {
                 res = new Item();
         }
         return res;
+    }
+    
+    public void collide(GameCtrl ctrl) {
     }
 
     @Override

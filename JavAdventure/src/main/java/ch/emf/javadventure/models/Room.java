@@ -36,8 +36,9 @@ public class Room {
                 if (ch == '#') {
                     content[i][j] = new Wall();
                 } else if (ch == ' ') {
-                    if (isDoor(i, j, lines)) {
-                        content[i][j] = new Door();
+                    Door.Direction dir = isDoor(i, j, lines);
+                    if (dir != null) {
+                        content[i][j] = new Door(dir);
                     } else {
                         content[i][j] = null; // Space is considered null
                     }
@@ -46,21 +47,25 @@ public class Room {
         }
     }
 
-    private boolean isDoor(int i, int j, String[] lines) {
+    public Room() {
+    }
+    
+    
+    private Door.Direction isDoor(int i, int j, String[] lines) {
         int numRows = lines.length;
         int numCols = lines[0].length();
 
         // A door is a space in the wall in the first or last row
         if ((i == 0 || i == numRows - 1) && lines[i].charAt(j) == ' ') {
-            return true;
+            return (i == 0 ? Door.Direction.TOP : Door.Direction.BOTTOM);
         }
 
         // A door is a space in the wall in the first or last column
         if ((j == 0 || j == numCols - 1) && lines[i].charAt(j) == ' ') {
-            return true;
+            return (j == 0 ? Door.Direction.LEFT : Door.Direction.RIGHT);
         }
 
-        return false;
+        return null;
     }
 
     public int[] getPositionOfRoomElement(RoomElement r) {
@@ -98,6 +103,40 @@ public class Room {
 
     public RoomElement[][] getContent() {
         return content;
+    }
+    
+    public boolean areColiding(RoomElement element1, RoomElement element2){
+        int[] coord1 = getPositionOfRoomElement(element1);
+        int[] coord2 = getPositionOfRoomElement(element2);
+        
+        if (coord1.length != 2 || coord2.length != 2) {
+            throw new IllegalArgumentException("Both arrays must contain exactly two elements.");
+        }
+
+        int x1 = coord1[0];
+        int y1 = coord1[1];
+        int x2 = coord2[0];
+        int y2 = coord2[1];
+
+        int deltaX = Math.abs(x1 - x2);
+        int deltaY = Math.abs(y1 - y2);
+
+        // Coordinates are next to each other if they are 1 unit apart in either the x or y direction, or diagonally
+         return (deltaX <= 1 && deltaY <= 1) && !(deltaX == 0 && deltaY == 0);
+        
+    }
+    
+    public List<RoomElement> getAllNonWallElements() {
+        List<RoomElement> nonWallElements = new ArrayList<>();
+        for (int i = 0; i < content.length; i++) {
+            for (int j = 0; j < content[0].length; j++) {
+                RoomElement element = content[i][j];
+                if (element != null && !(element instanceof Wall)) {
+                    nonWallElements.add(element);
+                }
+            }
+        }
+        return nonWallElements;
     }
 
 }

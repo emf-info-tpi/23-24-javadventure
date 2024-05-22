@@ -4,6 +4,8 @@
  */
 package ch.emf.javadventure.models;
 
+import ch.emf.javadventure.ctrl.GameCtrl;
+
 /**
  *
  * @author schwandern
@@ -20,6 +22,9 @@ public class Item extends RoomElement {
         this.name = name;
     }
     
-    
+    @Override
+    public void collide(GameCtrl source) {
+        System.out.println("ITEM !!");
+    }
     
 }

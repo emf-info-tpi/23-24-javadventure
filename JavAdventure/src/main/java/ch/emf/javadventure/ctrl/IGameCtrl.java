@@ -14,20 +14,17 @@ import ch.emf.javadventure.views.IGameView;
  * @author schwandern
  */
 public interface IGameCtrl {
-    
 
+    public void setGameView(IGameView gameView);
 
-public void setGameView(IGameView gameView);    
+    public void setPlayer(Player player);
 
-public void setPlayer(Player player);
+    public RoomElement[][] move(char key);
 
-public RoomElement[][] move(char key);
+    public void setCurrentRoom(Room currentRoom);
 
-public void setCurrentRoom(Room currentRoom);
+    public void updateRoom();
 
- public void updateRoom();
+    public void loadJsonData(IGameView view, IGameCtrl gameCtrl);
 
-    
 }
-
-

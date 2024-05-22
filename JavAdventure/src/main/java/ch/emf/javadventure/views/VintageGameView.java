@@ -141,8 +141,9 @@ public class VintageGameView extends JFrame implements IGameView {
         
         
         String map = "";
-        for (int j = 0; j < r[0].length; j++) {
-            for (int i = 0; i < r.length; i++) {
+        for (int i = 0; i < r.length; i++) {
+            for (int j = 0; j < r[0].length; j++) {
+            
                 map += r[i][j] != null ? r[i][j] : " ";
             }
             map += "\n";
