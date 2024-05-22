@@ -22,8 +22,7 @@ public class RoomElement implements IElement {
     public RoomElement() {
     }
     
-    
-
+   
     public static RoomElement createFrom(String type) {
         RoomElement res = null;
         switch (type) {

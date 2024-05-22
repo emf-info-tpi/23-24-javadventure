@@ -63,7 +63,7 @@ public class Room {
         return false;
     }
 
-    public int[] getPositionOfRoomEntity(RoomElement r) {
+    public int[] getPositionOfRoomElement(RoomElement r) {
         for (int i = 0; i < content.length; i++) {
             for (int j = 0; j < content[0].length; j++) {
                 if (r.equals(content[i][j])) {
@@ -89,7 +89,7 @@ public class Room {
 
     public RoomElement[][] moveRoomEntity(RoomElement r, int x, int y) {
         if (this.content[x][y] == null) {
-            int[] lastPos = getPositionOfRoomEntity(r);
+            int[] lastPos = getPositionOfRoomElement(r);
             content[x][y] = r;
             content[lastPos[0]][lastPos[1]] = null;
         }

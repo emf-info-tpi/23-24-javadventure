@@ -4,6 +4,9 @@
  */
 package ch.emf.javadventure.views;
 
+import ch.emf.javadventure.ctrl.IGameCtrl;
+import ch.emf.javadventure.models.RoomElement;
+
 /**
  * The IGameView interface defines the methods required for the game view in the JavAdventure application.
  * It includes methods to draw the room map, set room descriptions, map legends, output text, and manage user input.
@@ -12,6 +15,13 @@ package ch.emf.javadventure.views;
  * @since 18.05.2024
  */
 public interface IGameView {
+    
+    
+    public void setGamectrl(IGameCtrl gamectrl);
+    
+    
+    
+    public void updateRoom(RoomElement[][] r);
 
     /**
      * Draws the room map in the game view.

@@ -5,6 +5,7 @@
 package ch.emf.javadventure.views;
 
 import ch.emf.javadventure.ctrl.GameCtrl;
+import ch.emf.javadventure.ctrl.IGameCtrl;
 import ch.emf.javadventure.models.RoomElement;
 import javax.swing.*;
 import java.awt.*;
@@ -28,7 +29,7 @@ public class VintageGameView extends JFrame implements IGameView {
     private JTextArea mapLegend;
     private JTextArea outputText;
     private JTextField userInput;
-    private GameCtrl gamectrl;
+    private IGameCtrl gamectrl;
 
    
 
@@ -184,7 +185,7 @@ public class VintageGameView extends JFrame implements IGameView {
     }
     
     
-     public void setGamectrl(GameCtrl gamectrl) {
+     public void setGamectrl(IGameCtrl gamectrl) {
         this.gamectrl = gamectrl;
     }
 }

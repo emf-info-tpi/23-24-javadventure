@@ -1,69 +1,38 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package ch.emf.javadventure.app;
+package services;
 
-import ch.emf.javadventure.ctrl.GameCtrl;
+import ch.emf.javadventure.app.JavAdventure;
+import static ch.emf.javadventure.app.JavAdventure.currentRoom;
 import ch.emf.javadventure.ctrl.IGameCtrl;
-import ch.emf.javadventure.models.IElement;
 import ch.emf.javadventure.models.Player;
 import ch.emf.javadventure.models.Room;
 import ch.emf.javadventure.models.RoomElement;
 import ch.emf.javadventure.views.IGameView;
-import ch.emf.javadventure.views.VintageGameView;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.SwingUtilities;
 import org.json.JSONArray;
-
 import org.json.JSONObject;
 import org.json.JSONTokener;
-import services.JsonLoader;
 
 /**
- * The JavAdventure class serves as the entry point for the JavAdventure
- * application. It initializes the game view and loads the initial room data
- * from a JSON file.
  *
- * @author <a href="mailto:fanny.riedo@edufr.ch">Fanny Riedo</a>
- * @since 18.05.2024
+ * @author schwandern
  */
-public class JavAdventure {
-
-    public static int[] currentRoom;
+public class JsonLoader {
     
-
-    /**
-     * The main method starts the JavAdventure application. It sets the initial
-     * room coordinates and initializes the game view.
-     *
-     * @param args command-line arguments (not used)
-     */
-    public static void main(String[] args) {
-
-        currentRoom = new int[]{0, 0, 0}; // start on ground floor, center room.
-        IGameView view = new VintageGameView();
-        IGameCtrl gameCtrl = new GameCtrl();
-        JsonLoader jsonLoader = new JsonLoader();
-        view.setGamectrl(gameCtrl);
-        gameCtrl.setGameView(view);
-        
-
-        SwingUtilities.invokeLater(() -> {
-            jsonLoader.loadJsonData(view, gameCtrl);
-        });
-    }
-
-    /**
+    
+    
+     /**
      * Loads the JSON data for the current room and updates the game view.
      *
      * @param view the game view to be updated with the room data
      */
-    
-    /*
-    private static void loadJsonData(IGameView view, IGameCtrl gameCtrl) {
+    public static void loadJsonData(IGameView view, IGameCtrl gameCtrl) {
         try (InputStream is = JavAdventure.class.getResourceAsStream("/data/data.json")) {
             if (is == null) {
                 throw new IOException("Resource not found: /data/data.json");
@@ -106,5 +75,6 @@ public class JavAdventure {
             e.printStackTrace();
         }
     }
-*/
+    
+    
 }
