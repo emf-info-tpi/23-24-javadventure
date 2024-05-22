@@ -87,7 +87,7 @@ public class GameCtrl implements IGameCtrl {
         }
     }
 
-    public void runCombat(int dificulte) {
+    public void runCombat(int dificulte, RoomElement elem) {
         try {
 
             // Compile the source file
@@ -116,6 +116,7 @@ public class GameCtrl implements IGameCtrl {
                     //Execute the test
                     if (runJUnitTest(DynamicJUnitTestLevel1.class)) {
                         System.out.println("TEST PASSED");
+                        currentRoom.removeRoomElement(elem);
                     } else {
                         System.out.println("TEST FAILED");
                     }
@@ -125,6 +126,7 @@ public class GameCtrl implements IGameCtrl {
                     //Execute the test
                     if (runJUnitTest(DynamicJUnitTestLevel2.class)) {
                         System.out.println("TEST PASSED");
+                        currentRoom.removeRoomElement(elem);
                     } else {
                         System.out.println("TEST FAILED");
                     }

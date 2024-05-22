@@ -23,7 +23,7 @@ public class Enemy extends RoomElement{
      @Override
     public void collide(GameCtrl source) {
         System.out.println("Aie y'a un ennemi !!");
-        source.runCombat(dificulte);
+        source.runCombat(dificulte, this);
     }
     
 }
