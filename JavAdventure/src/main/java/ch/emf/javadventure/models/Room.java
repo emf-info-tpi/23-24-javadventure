@@ -20,9 +20,11 @@ public class Room {
 
     private RoomElement[][] content;
     private String roomDescription;
+    private String wallDescription;
 
     public Room(String room, String roomDescription, String wallDescription) {
         this.roomDescription = roomDescription;
+        this.wallDescription = wallDescription;
         // Split the input string by new lines to get each row
         String[] lines = room.split("\n");
 
@@ -38,9 +40,8 @@ public class Room {
             for (int j = 0; j < numCols; j++) {
                 char ch = lines[i].charAt(j);
                 if (ch == '#') {
-                    Wall w = new Wall();
-                    w.setDescription(wallDescription);
-                    content[i][j] = w;
+                
+                    content[i][j] = new Wall();
                 } else if (ch == ' ') {
                     Door.Direction dir = isDoor(i, j, lines);
                     if (dir != null) {
@@ -164,22 +165,6 @@ public class Room {
 
     }
 
-    public String getElementDesc(Class c) {
-
-        for (int i = 0; i < content.length; i++) {
-            for (int j = 0; j < content[0].length; j++) {
-                RoomElement element = content[i][j];
-                if (element != null) {
-                    if (c.isInstance(element)) {
-                        return element.getDescription();
-                    }
-                }
-            }
-        }
-        return "";
-
-    }
-    
     public HashSet<RoomElement> getRoomElements(Class c) {
 
         HashSet<RoomElement> elements = new HashSet<>();
@@ -196,8 +181,8 @@ public class Room {
         return elements;
 
     }
-    
-     public HashSet<Item> getRoomItems() {
+
+    public HashSet<Item> getRoomItems() {
 
         HashSet<Item> items = new HashSet<>();
         for (int i = 0; i < content.length; i++) {
@@ -205,7 +190,7 @@ public class Room {
                 RoomElement element = content[i][j];
                 if (element != null) {
                     if (element instanceof Item) {
-                        items.add((Item)element);
+                        items.add((Item) element);
                     }
                 }
             }
@@ -213,6 +198,13 @@ public class Room {
         return items;
 
     }
+
+    public String getWallDescription() {
+        return wallDescription;
+    }
+
+
+    
     
 
 }

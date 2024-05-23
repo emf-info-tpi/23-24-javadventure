@@ -90,7 +90,7 @@ public class JsonLoader {
                     .getJSONObject(String.valueOf(currentRoomNumber[2]));
 
             //view.drawRoomMap(room.getString("roomMap"));
-            Room newRoom = new Room(room.getString("roomMap"),room.getString("roomDescription"),room.getString("wallDescription"));
+            Room newRoom = new Room(room.getString("roomMap"),room.getString("roomDescription"), room.getString("wallDescription"));
             
             
             //view.setRoomDescription(room.getString("roomDescription"));

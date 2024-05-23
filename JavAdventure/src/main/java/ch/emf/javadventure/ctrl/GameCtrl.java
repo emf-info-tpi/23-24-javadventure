@@ -269,13 +269,13 @@ public class GameCtrl implements IGameCtrl {
             case "regarder":
                 switch (split[1]) {
                     case "murs":
-                        gameView.setOutputText(currentRoom.getElementDesc(Wall.class));
+                        gameView.setOutputText(currentRoom.getWallDescription());
                         break;
                     case "inventaire":
                         gameView.setOutputText(player.printInventory());
                         break;
                     default:
-                        throw new AssertionError();
+                        gameView.setOutputText("la commande n'existe pas");
                 }
 
                 break;

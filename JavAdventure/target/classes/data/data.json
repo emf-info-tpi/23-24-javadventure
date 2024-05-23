@@ -24,8 +24,8 @@
                 "elements": [
                     {
                         "type": "MONSTRE niv1",
-                        "x": 2,
-                        "y": 2
+                        "x": 14,
+                        "y": 16
                     },
                     {
                         "type": "HACHE",
@@ -42,13 +42,13 @@
                 "elements": [
                     {
                         "type": "MONSTRE niv2",
-                        "x": 2,
-                        "y": 2
+                        "x": 5,
+                        "y": 7
                     },
                     {
                         "type": "HACHE",
-                        "x": 5,
-                        "y": 7
+                        "x": 8,
+                        "y": 13
                     }
                 ]
             }

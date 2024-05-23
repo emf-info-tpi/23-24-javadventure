@@ -60,7 +60,7 @@ public class VintageGameView extends JFrame implements IGameView {
         }
 
         // Room map (top left)
-        map = createTextArea(30, 30, font);
+        map = createTextArea(35, 35, font);
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridheight = 2;  // Span 2 rows
