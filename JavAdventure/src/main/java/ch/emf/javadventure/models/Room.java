@@ -138,6 +138,7 @@ public class Room {
     }
 
     public List<RoomElement> getAllNonWallElements() {
+        /*
         List<RoomElement> nonWallElements = new ArrayList<>();
         for (int i = 0; i < content.length; i++) {
             for (int j = 0; j < content[0].length; j++) {
@@ -146,8 +147,10 @@ public class Room {
                     nonWallElements.add(element);
                 }
             }
-        }
-        return nonWallElements;
+        }*/
+        
+        
+        return Arrays.stream(content).flatMap(list -> Arrays.stream(list)).filter(Objects::nonNull).filter(el -> !(el instanceof Wall)).toList();
     }
 
     public String getRoomDescription() {

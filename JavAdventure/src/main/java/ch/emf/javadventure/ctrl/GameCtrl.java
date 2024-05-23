@@ -26,9 +26,10 @@ import org.junit.platform.launcher.core.LauncherFactory;
 import org.junit.platform.launcher.listeners.SummaryGeneratingListener;
 import org.junit.platform.launcher.listeners.TestExecutionSummary;
 import ch.emf.javadventure.services.CustomClassLoader;
-import ch.emf.javadventure.services.DynamicJUnitTestLevel1;
-import ch.emf.javadventure.services.DynamicJUnitTestLevel2;
+import ch.emf.javadventure.tests.DynamicJUnitTestLevel1;
+import ch.emf.javadventure.tests.DynamicJUnitTestLevel2;
 import ch.emf.javadventure.services.JsonLoader;
+import ch.emf.javadventure.services.JunitTestRunner;
 
 /**
  *
@@ -83,7 +84,6 @@ public class GameCtrl implements IGameCtrl {
         }
         if (!detecte) {
             showItemDesc("");
-
         }
     }
 
@@ -114,7 +114,7 @@ public class GameCtrl implements IGameCtrl {
                     DynamicJUnitTestLevel1.setInstance(recompiledClassInstance);
 
                     //Execute the test
-                    if (runJUnitTest(DynamicJUnitTestLevel1.class)) {
+                    if (JunitTestRunner.runJUnitTest(DynamicJUnitTestLevel1.class)) {
                         System.out.println("TEST PASSED");
                         currentRoom.removeRoomElement(elem);
                     } else {
@@ -124,7 +124,7 @@ public class GameCtrl implements IGameCtrl {
                     DynamicJUnitTestLevel2.setInstance(recompiledClassInstance);
 
                     //Execute the test
-                    if (runJUnitTest(DynamicJUnitTestLevel2.class)) {
+                    if (JunitTestRunner.runJUnitTest(DynamicJUnitTestLevel2.class)) {
                         System.out.println("TEST PASSED");
                         currentRoom.removeRoomElement(elem);
                     } else {
@@ -141,39 +141,7 @@ public class GameCtrl implements IGameCtrl {
 
     }
 
-    private static boolean runJUnitTest(Class<?> testClass) {
-        // Crée une requête de découverte pour les tests, spécifiant la classe de test à exécuter
-        LauncherDiscoveryRequest request = request()
-                .selectors(DiscoverySelectors.selectClass(testClass))
-                .build();
-
-        // Crée un lanceur (launcher) pour exécuter les tests
-        Launcher launcher = LauncherFactory.create();
-
-        // Crée un écouteur (listener) qui génère un résumé des tests exécutés
-        SummaryGeneratingListener listener = new SummaryGeneratingListener();
-
-        // Enregistre l'écouteur avec le lanceur
-        launcher.registerTestExecutionListeners(listener);
-
-        // Exécute les tests en utilisant la requête de découverte
-        launcher.execute(request);
-
-        // Récupère le résumé des tests après l'exécution
-        TestExecutionSummary summary = listener.getSummary();
-
-        // Affiche le résumé des tests dans la sortie standard
-        summary.printTo(new PrintWriter(System.out));
-
-        // Récupère le nombre de tests échoués
-        long testsFailedCount = summary.getTestsFailedCount();
-
-        // Détermine si tous les tests ont réussi
-        boolean testResult = testsFailedCount == 0;
-
-        // renvoyer le résultat
-        return testResult;
-    }
+    
 
     public void showItemDesc(String desc) {
         gameView.setOutputText(desc);

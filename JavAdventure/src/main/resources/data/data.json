@@ -21,8 +21,25 @@
         },
         "1": {
             "0": {
-                "roomMap": "        #      #         \n#########      ##########\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#########################\n                          ",
+                "roomMap": "        #      #         \n#########      ##########\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                        \n#                        \n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#########################\n                          ",
                 "roomDescription": "Ceci est la salle sud",
+                "elements": [
+                    {
+                        "type": "MONSTRE niv2",
+                        "x": 2,
+                        "y": 2
+                    },
+                    {
+                        "type": "HACHE",
+                        "x": 5,
+                        "y": 7
+                    }
+                ]
+            },
+            "1": {
+
+                "roomMap": " ########################\n #                      #\n #                      #\n #                      #\n #                      #\n##                      #\n                        #\n                        #\n                        #\n                        #\n##                      #\n #                      #\n #                      #\n #                      #\n #                      #\n ########################",
+                "roomDescription": "Ceci est la salle est",
                 "elements": [
                     {
                         "type": "MONSTRE niv2",

@@ -4,6 +4,8 @@
  */
 package ch.emf.javadventure.models;
 
+import ch.emf.javadventure.ctrl.GameCtrl;
+
 /**
  *
  * @author schwandern
