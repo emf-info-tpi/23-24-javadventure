@@ -5,6 +5,7 @@
             "0": {
                 "roomMap": "                         \n#########################\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#########      ##########\n        #      #          ",
                 "roomDescription": "ceci est la salle nord",
+                "wallDescription": "Murs de granite lisse",
                 "elements": [
                     {
                         "type": "EPEE",
@@ -23,6 +24,7 @@
             "0": {
                 "roomMap": "        #      #         \n#########      ##########\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                        \n#                        \n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#########################\n                          ",
                 "roomDescription": "Ceci est la salle sud",
+                "wallDescription": "Murs de brique rugeuse",
                 "elements": [
                     {
                         "type": "MONSTRE niv2",
@@ -40,6 +42,7 @@
 
                 "roomMap": " ########################\n #                      #\n #                      #\n #                      #\n #                      #\n##                      #\n                        #\n                        #\n                        #\n                        #\n##                      #\n #                      #\n #                      #\n #                      #\n #                      #\n ########################",
                 "roomDescription": "Ceci est la salle est",
+                "wallDescription": "Murs d'une grotte avec des stalagmites",
                 "elements": [
                     {
                         "type": "MONSTRE niv2",

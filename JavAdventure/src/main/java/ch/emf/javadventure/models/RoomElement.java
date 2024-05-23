@@ -11,9 +11,10 @@ import ch.emf.javadventure.models.IElement;
  *
  * @author schwandern
  */
-public class RoomElement implements IElement {
+public class RoomElement {
 
     private char texture;
+    private String description;
 
     public RoomElement(char texture) {
         this.texture = texture;
@@ -48,13 +49,12 @@ public class RoomElement implements IElement {
         return texture + "";
     }
 
-    @Override
-    public boolean isColliding(int x, int y) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    @Override
     public String getDescription() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return description;
     }
+
 }

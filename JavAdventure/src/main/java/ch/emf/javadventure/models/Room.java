@@ -4,8 +4,10 @@
  */
 package ch.emf.javadventure.models;
 
+import ch.emf.javadventure.ctrl.GameCtrl;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -19,7 +21,7 @@ public class Room {
     private RoomElement[][] content;
     private String roomDescription;
 
-    public Room(String room, String roomDescription) {
+    public Room(String room, String roomDescription, String wallDescription) {
         this.roomDescription = roomDescription;
         // Split the input string by new lines to get each row
         String[] lines = room.split("\n");
@@ -36,7 +38,9 @@ public class Room {
             for (int j = 0; j < numCols; j++) {
                 char ch = lines[i].charAt(j);
                 if (ch == '#') {
-                    content[i][j] = new Wall();
+                    Wall w = new Wall();
+                    w.setDescription(wallDescription);
+                    content[i][j] = w;
                 } else if (ch == ' ') {
                     Door.Direction dir = isDoor(i, j, lines);
                     if (dir != null) {
@@ -117,8 +121,10 @@ public class Room {
     public boolean areColiding(RoomElement element1, RoomElement element2) {
         int[] coord1 = getPositionOfRoomElement(element1);
         int[] coord2 = getPositionOfRoomElement(element2);
-        
-        if(coord1 == null || coord2 == null) return false;
+
+        if (coord1 == null || coord2 == null) {
+            return false;
+        }
 
         if (coord1.length != 2 || coord2.length != 2) {
             throw new IllegalArgumentException("Both arrays must contain exactly two elements.");
@@ -148,18 +154,30 @@ public class Room {
                 }
             }
         }*/
-        
-        
+
         return Arrays.stream(content).flatMap(list -> Arrays.stream(list)).filter(Objects::nonNull).filter(el -> !(el instanceof Wall)).toList();
     }
 
     public String getRoomDescription() {
         System.out.println(roomDescription);
         return roomDescription;
-        
+
     }
-    
-    
-    
+
+    public String getElementDesc(Class c) {
+
+        for (int i = 0; i < content.length; i++) {
+            for (int j = 0; j < content[0].length; j++) {
+                RoomElement element = content[i][j];
+                if (element != null) {
+                    if (c.isInstance(element)) {
+                        return element.getDescription();
+                    }
+                }
+            }
+        }
+        return "";
+
+    }
 
 }

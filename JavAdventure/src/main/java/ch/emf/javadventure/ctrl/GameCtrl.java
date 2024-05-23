@@ -11,6 +11,7 @@ import ch.emf.javadventure.models.Item;
 import ch.emf.javadventure.models.Player;
 import ch.emf.javadventure.models.Room;
 import ch.emf.javadventure.models.RoomElement;
+import ch.emf.javadventure.models.Wall;
 import ch.emf.javadventure.views.IGameView;
 import java.io.PrintWriter;
 import java.util.HashMap;
@@ -232,11 +233,11 @@ public class GameCtrl implements IGameCtrl {
         currentRoom.placeRoomEntity(player, 14, 10);
     }
 
-    public ch.emf.javadventure.models.Room getCurrentRoom() {
+    public Room getCurrentRoom() {
         return currentRoom;
     }
 
-    public void setCurrentRoom(ch.emf.javadventure.models.Room currentRoom) {
+    public void setCurrentRoom(Room currentRoom) {
         this.currentRoom = currentRoom;
 
     }
@@ -260,6 +261,28 @@ public class GameCtrl implements IGameCtrl {
 
         JsonLoader.loadJsonData(view, gameCtrl, currentRoomNumber);
 
+    }
+
+    @Override
+    public void executeCommand(String command) {
+        String[] split = command.split(" ");
+        switch (split[0]) {
+            case "regarder":
+                switch (split[1]) {
+                    case "murs":
+                        gameView.setOutputText(currentRoom.getElementDesc(Wall.class));
+                        break;
+                    default:
+                        throw new AssertionError();
+                }
+                
+                
+                
+                break;
+            case "prendre":
+                
+                break;
+        }
     }
 
 }

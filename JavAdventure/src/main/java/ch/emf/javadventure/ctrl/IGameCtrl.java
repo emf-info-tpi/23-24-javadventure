@@ -28,5 +28,7 @@ public interface IGameCtrl {
     public void loadJsonData(IGameView view, IGameCtrl gameCtrl);
     
     public void AddRoom(Room room);
+    
+    public void executeCommand(String command);
 
 }

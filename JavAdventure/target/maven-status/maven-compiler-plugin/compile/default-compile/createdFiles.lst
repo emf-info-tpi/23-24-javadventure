@@ -5,6 +5,7 @@ ch\emf\javadventure\app\JavAdventure.class
 ch\emf\javadventure\models\Room.class
 ch\emf\javadventure\models\IElement.class
 ch\emf\javadventure\ctrl\GameCtrl.class
+ch\emf\javadventure\views\VintageGameView$3.class
 ch\emf\javadventure\views\VintageGameView.class
 ch\emf\javadventure\models\RoomElement.class
 ch\emf\javadventure\services\CustomClassLoader.class
