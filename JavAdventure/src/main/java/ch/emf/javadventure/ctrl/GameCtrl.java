@@ -31,6 +31,7 @@ import ch.emf.javadventure.tests.DynamicJUnitTestLevel1;
 import ch.emf.javadventure.tests.DynamicJUnitTestLevel2;
 import ch.emf.javadventure.services.JsonLoader;
 import ch.emf.javadventure.services.JunitTestRunner;
+import java.util.HashSet;
 
 /**
  *
@@ -141,8 +142,6 @@ public class GameCtrl implements IGameCtrl {
         }
 
     }
-
-    
 
     public void showItemDesc(String desc) {
         gameView.setOutputText(desc);
@@ -272,15 +271,25 @@ public class GameCtrl implements IGameCtrl {
                     case "murs":
                         gameView.setOutputText(currentRoom.getElementDesc(Wall.class));
                         break;
+                    case "inventaire":
+                        gameView.setOutputText(player.printInventory());
+                        break;
                     default:
                         throw new AssertionError();
                 }
-                
-                
-                
+
                 break;
             case "prendre":
-                
+                HashSet<Item> test;
+                test = currentRoom.getRoomItems();
+                for (Item item : test) {
+                    if (split[1].equals(item.getDescription())) {
+                        player.addToInventory(item);
+                        currentRoom.removeRoomElement(item);
+                        updateRoom();
+                    }
+                }
+
                 break;
         }
     }

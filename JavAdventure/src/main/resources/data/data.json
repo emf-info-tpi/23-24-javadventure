@@ -11,12 +11,8 @@
                         "type": "EPEE",
                         "x": 10,
                         "y": 10
-                    },
-                    {
-                        "type": "MONSTRE niv1",
-                        "x": 5,
-                        "y": 7
                     }
+                    
                 ]
             }
         },
@@ -27,7 +23,7 @@
                 "wallDescription": "Murs de brique rugeuse",
                 "elements": [
                     {
-                        "type": "MONSTRE niv2",
+                        "type": "MONSTRE niv1",
                         "x": 2,
                         "y": 2
                     },

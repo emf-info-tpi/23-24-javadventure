@@ -179,5 +179,40 @@ public class Room {
         return "";
 
     }
+    
+    public HashSet<RoomElement> getRoomElements(Class c) {
+
+        HashSet<RoomElement> elements = new HashSet<>();
+        for (int i = 0; i < content.length; i++) {
+            for (int j = 0; j < content[0].length; j++) {
+                RoomElement element = content[i][j];
+                if (element != null) {
+                    if (c.isInstance(element)) {
+                        elements.add(element);
+                    }
+                }
+            }
+        }
+        return elements;
+
+    }
+    
+     public HashSet<Item> getRoomItems() {
+
+        HashSet<Item> items = new HashSet<>();
+        for (int i = 0; i < content.length; i++) {
+            for (int j = 0; j < content[0].length; j++) {
+                RoomElement element = content[i][j];
+                if (element != null) {
+                    if (element instanceof Item) {
+                        items.add((Item)element);
+                    }
+                }
+            }
+        }
+        return items;
+
+    }
+    
 
 }

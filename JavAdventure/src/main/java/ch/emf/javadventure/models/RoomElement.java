@@ -26,6 +26,7 @@ public class RoomElement {
 
     public static RoomElement createFrom(String type) {
         RoomElement res = null;
+
         switch (type) {
             case "MONSTRE niv1" ->
                 res = new Enemy(1);
@@ -37,6 +38,9 @@ public class RoomElement {
                 res = new Item(type);
             case "BOUCLIER" ->
                 res = new Item(type);
+        }
+        if (res != null) {
+            res.setDescription(type.toLowerCase());
         }
         return res;
     }
