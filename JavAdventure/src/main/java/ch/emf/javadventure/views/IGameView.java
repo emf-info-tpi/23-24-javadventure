@@ -4,32 +4,22 @@
  */
 package ch.emf.javadventure.views;
 
+import ch.emf.javadventure.ctrl.IGameCtrl;
+import ch.emf.javadventure.models.RoomElement;
+
 /**
- * The IGameView interface defines the methods required for the game view in the JavAdventure application.
- * It includes methods to draw the room map, set room descriptions, map legends, output text, and manage user input.
+ * The IGameView interface defines the methods required for the game view in the
+ * JavAdventure application. It includes methods to draw the room map, set room
+ * descriptions, map legends, output text, and manage user input.
  *
  * @author <a href="mailto:fanny.riedo@edufr.ch">Fanny Riedo</a>
  * @since 18.05.2024
  */
 public interface IGameView {
 
-    /**
-     * Draws the room map in the game view.
-     *
-     * @param roomMap a string representation of the room map
-     */
-    public void drawRoomMap(String roomMap);
-    
-    
-    /**
-     * Sets a single character in the room map at the specified row and column.
-     *
-     * @param character the character to set
-     * @param row the row position
-     * @param col the column position
-     */
-    public void setMapCharacter(char character, int row, int col) ;
+    public void setGamectrl(IGameCtrl gamectrl);
 
+    public void updateRoom(RoomElement[][] r);
 
     /**
      * Sets the description of the current room in the game view.
@@ -53,15 +43,30 @@ public interface IGameView {
     public void setOutputText(String text);
 
     /**
+     * Clears the user input in the game view.
+     */
+    public void clearUserInput();
+
+    /**
      * Gets the user input from the game view.
      *
      * @return the user input as a string
      */
     public String getUserInput();
 
+    // methodes presentes dans le squelette initialles mais pas utilisées
     /**
-     * Clears the user input in the game view.
+     * Draws the room map in the game view.
+     *
+     * @param roomMap a string representation of the room map
      */
-    public void clearUserInput();
+    //public void drawRoomMap(String roomMap);
+    /**
+     * Sets a single character in the room map at the specified row and column.
+     *
+     * @param character the character to set
+     * @param row the row position
+     * @param col the column position
+     */
+    //public void setMapCharacter(char character, int row, int col) ;
 }
-

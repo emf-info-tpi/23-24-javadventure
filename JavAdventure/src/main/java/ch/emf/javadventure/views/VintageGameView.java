@@ -4,18 +4,24 @@
  */
 package ch.emf.javadventure.views;
 
+import ch.emf.javadventure.ctrl.GameCtrl;
+import ch.emf.javadventure.ctrl.IGameCtrl;
+import ch.emf.javadventure.models.RoomElement;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.io.InputStream;
 import javax.swing.border.LineBorder;
 
 /**
- * The VintageGameView class represents the main window of the JavAdventure game.
- * It displays the map, room description, map legend, output text, and user input areas.
- * 
+ * The VintageGameView class represents the main window of the JavAdventure
+ * game. It displays the map, room description, map legend, output text, and
+ * user input areas.
+ *
  * @author <a href="mailto:fanny.riedo@edufr.ch">Fanny Riedo</a>
  * @since 18.05.2024
  */
@@ -26,6 +32,8 @@ public class VintageGameView extends JFrame implements IGameView {
     private JTextArea mapLegend;
     private JTextArea outputText;
     private JTextField userInput;
+    private IGameCtrl gamectrl;
+    private JLabel asciiArtLabel;
 
     /**
      * Constructs a new VintageGameView window and initializes its components.
@@ -33,7 +41,7 @@ public class VintageGameView extends JFrame implements IGameView {
     public VintageGameView() {
         // Setup base window
         setTitle("JavAdventure");
-        setSize(600, 600);
+        setSize(800, 800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
         setLayout(new GridBagLayout());
@@ -41,7 +49,7 @@ public class VintageGameView extends JFrame implements IGameView {
 
         // Set the background color of the content pane to black
         getContentPane().setBackground(Color.BLACK);
-        
+
         // Setup font
         Font font;
         try {
@@ -51,13 +59,25 @@ public class VintageGameView extends JFrame implements IGameView {
             e.printStackTrace();
             font = new Font("Monospaced", Font.PLAIN, 20);
         }
+        
+        
+        
 
         // Room map (top left)
-        map = createTextArea(18, 25, font);
+        map = createTextArea(35, 35, font);
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridheight = 2;  // Span 2 rows
         add(map, gbc);
+
+        map.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                if (gamectrl != null) {
+                    updateRoom(gamectrl.move(e.getKeyChar()));
+                }
+            }
+        });
 
         // Room description panel (bottom-left)
         roomDescription = createTextArea(6, 25, font);
@@ -73,7 +93,7 @@ public class VintageGameView extends JFrame implements IGameView {
         add(mapLegend, gbc);
 
         // Output panel (middle-right)
-        outputText = createTextArea(12, 20, font); 
+        outputText = createTextArea(12, 20, font);
         gbc.gridx = 1;
         gbc.gridy = 1;
         add(outputText, gbc);
@@ -95,14 +115,27 @@ public class VintageGameView extends JFrame implements IGameView {
             }
         });
 
+        userInput.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    // Process command entered in the text field
+                    gamectrl.executeCommand(userInput.getText().trim());
+
+                }
+            }
+        });
+
         setVisible(true);
     }
 
+    
+    /*
     @Override
     public void drawRoomMap(String roomMap) {
         map.setText(roomMap);
     }
-    
+
     @Override
     public void setMapCharacter(char character, int row, int col) {
         try {
@@ -118,6 +151,21 @@ public class VintageGameView extends JFrame implements IGameView {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    */
+
+    public void updateRoom(RoomElement[][] r) {
+
+        String map = "";
+        for (int i = 0; i < r.length; i++) {
+            for (int j = 0; j < r[0].length; j++) {
+
+                map += r[i][j] != null ? r[i][j] : " ";
+            }
+            map += "\n";
+        }
+        this.map.setText(map);
+
     }
 
     @Override
@@ -146,7 +194,8 @@ public class VintageGameView extends JFrame implements IGameView {
     }
 
     /**
-     * Creates and returns a configured JTextArea with specified rows, columns, and font.
+     * Creates and returns a configured JTextArea with specified rows, columns,
+     * and font.
      *
      * @param rows the number of rows in the text area
      * @param cols the number of columns in the text area
@@ -162,5 +211,9 @@ public class VintageGameView extends JFrame implements IGameView {
         textArea.setWrapStyleWord(true);
         textArea.setEditable(false);
         return textArea;
+    }
+
+    public void setGamectrl(IGameCtrl gamectrl) {
+        this.gamectrl = gamectrl;
     }
 }
