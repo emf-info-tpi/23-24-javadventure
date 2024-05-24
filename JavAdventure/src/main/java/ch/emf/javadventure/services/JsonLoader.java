@@ -31,54 +31,9 @@ public class JsonLoader {
      *
      * @param view the game view to be updated with the room data
      */
-    public static void loadJsonData(IGameView view, IGameCtrl gameCtrl, int[] currentRoomNumber) {
-        try (InputStream is = JavAdventure.class.getResourceAsStream("/data/data.json")) {
-            if (is == null) {
-                throw new IOException("Resource not found: /data/data.json");
-            }
-
-            JSONObject jsonObject = new JSONObject(new JSONTokener(is));
-            JSONObject room = jsonObject.getJSONObject(String.valueOf(currentRoomNumber[0]))
-                    .getJSONObject(String.valueOf(currentRoomNumber[1]))
-                    .getJSONObject(String.valueOf(currentRoomNumber[2]));
-
-            //view.drawRoomMap(room.getString("roomMap"));
-            Room newRoom = new Room(room.getString("roomMap"),room.getString("roomDescription"),room.getString("wallDescription"));
-            
-            
-            //view.setRoomDescription(room.getString("roomDescription"));
-            view.setMapLegend("ici sera la légende");
-            view.setOutputText("informations supplémentaires");
-
-            JSONArray elementsArray = room.getJSONArray("elements");
-            
-            for (int i = 0; i < elementsArray.length(); i++) {
-                JSONObject elementObject = elementsArray.getJSONObject(i);
-                String type = elementObject.getString("type");
-                int elementX = elementObject.getInt("x");
-                int elementY = elementObject.getInt("y");
-                RoomElement r = new RoomElement();
-                newRoom.placeRoomEntity(r.createFrom(type), elementX, elementY);
-            }
-
-            Player player = new Player();
-            gameCtrl.setCurrentRoom(newRoom);
-            gameCtrl.setPlayer(player);
-            gameCtrl.AddRoom(newRoom);
-            gameCtrl.updateRoom();
-            
-
-            //newRoom.placeRoomEntity(r, 0, 0)
-            // Pour chacun des éléments dans la liste, on le dessinera sur la carte et si nécessaire dans la légende
-            //view.setMapCharacter('ç', 5, 5);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
     
-    
-    public Room loadJsonDataRoom(int[] currentRoomNumber) {
+   
+    public Room loadJsonData(int[] currentRoomNumber) {
         try (InputStream is = JavAdventure.class.getResourceAsStream("/data/data.json")) {
             if (is == null) {
                 throw new IOException("Resource not found: /data/data.json");

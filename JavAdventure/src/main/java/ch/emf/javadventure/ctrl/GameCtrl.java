@@ -4,33 +4,22 @@
  */
 package ch.emf.javadventure.ctrl;
 
-import ch.emf.javadventure.models.Door;
 import ch.emf.javadventure.models.Door.Direction;
-import ch.emf.javadventure.models.Enemy;
 import ch.emf.javadventure.models.Item;
 import ch.emf.javadventure.models.Player;
 import ch.emf.javadventure.models.Room;
 import ch.emf.javadventure.models.RoomElement;
-import ch.emf.javadventure.models.Wall;
 import ch.emf.javadventure.views.IGameView;
-import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.tools.JavaCompiler;
 import javax.tools.ToolProvider;
-import org.junit.platform.engine.discovery.DiscoverySelectors;
-import org.junit.platform.launcher.Launcher;
-import org.junit.platform.launcher.LauncherDiscoveryRequest;
-import static org.junit.platform.launcher.core.LauncherDiscoveryRequestBuilder.request;
-import org.junit.platform.launcher.core.LauncherFactory;
-import org.junit.platform.launcher.listeners.SummaryGeneratingListener;
-import org.junit.platform.launcher.listeners.TestExecutionSummary;
 import ch.emf.javadventure.services.CustomClassLoader;
 import ch.emf.javadventure.tests.DynamicJUnitTestLevel1;
 import ch.emf.javadventure.tests.DynamicJUnitTestLevel2;
 import ch.emf.javadventure.services.JsonLoader;
-import ch.emf.javadventure.services.JunitTestRunner;
+import ch.emf.javadventure.services.TestRunner;
 import java.util.HashSet;
 
 /**
@@ -48,11 +37,23 @@ public class GameCtrl implements IGameCtrl {
     private Map<String, Room> rooms;
 
     public GameCtrl() {
+
         jsonLoader = new JsonLoader();
         currentRoomNumber = new int[]{0, 0, 0};
         rooms = new HashMap<>();
     }
 
+    @Override
+    public void InitializeGame() {
+
+        currentRoom = jsonLoader.loadJsonData(currentRoomNumber);
+        player = new Player();
+        setPlayer(player);
+        AddRoom(currentRoom);
+        updateRoom();
+    }
+
+    @Override
     public RoomElement[][] move(char key) {
         int[] pos = currentRoom.getPositionOfRoomElement(player);
         int[] nextPos = new int[]{pos[0], pos[1]};
@@ -90,55 +91,12 @@ public class GameCtrl implements IGameCtrl {
     }
 
     public void runCombat(int dificulte, RoomElement elem) {
-        try {
+        TestRunner j = new TestRunner();
+        boolean passed;
+        passed = j.runCombat(dificulte);
 
-            // Compile the source file
-            JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
-            String[] args = new String[]{"-d", ".\\target\\classes\\", ".\\src\\main\\java\\ch\\emf\\javadventure\\services\\BattleMethods.java"};
-            int compilationResult = compiler.run(null, System.out, System.out, args);
-
-            if (compilationResult == 0) { // If compilation successful
-                CustomClassLoader classLoader = new CustomClassLoader(".\\target\\classes\\");
-
-                System.out.println("Class Loader: " + classLoader);
-
-                classLoader.unloadClasses(); // Unload previously loaded classes
-
-                // Load the compiled class
-                Class<?> loadedClass = classLoader.loadClass("ch.emf.javadventure.services.BattleMethods");
-                System.out.println("Loaded Class: " + loadedClass.getName());
-
-                // Create an instance of the compiled class
-                Object recompiledClassInstance = loadedClass.getDeclaredConstructor().newInstance();
-
-                // Set the instance in DynamicJUnitTestExample
-                if (dificulte == 1) {
-                    DynamicJUnitTestLevel1.setInstance(recompiledClassInstance);
-
-                    //Execute the test
-                    if (JunitTestRunner.runJUnitTest(DynamicJUnitTestLevel1.class)) {
-                        System.out.println("TEST PASSED");
-                        currentRoom.removeRoomElement(elem);
-                    } else {
-                        System.out.println("TEST FAILED");
-                    }
-                } else if (dificulte == 2) {
-                    DynamicJUnitTestLevel2.setInstance(recompiledClassInstance);
-
-                    //Execute the test
-                    if (JunitTestRunner.runJUnitTest(DynamicJUnitTestLevel2.class)) {
-                        System.out.println("TEST PASSED");
-                        currentRoom.removeRoomElement(elem);
-                    } else {
-                        System.out.println("TEST FAILED");
-                    }
-                }
-
-            } else {
-                System.err.println("compilation failed");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (passed) {
+            currentRoom.removeRoomElement(elem);
         }
 
     }
@@ -158,7 +116,7 @@ public class GameCtrl implements IGameCtrl {
             if (rooms.containsKey(roomKey)) {
                 nextRoom = rooms.get(roomKey);
             } else {
-                nextRoom = jsonLoader.loadJsonDataRoom(nextRoomNumber);
+                nextRoom = jsonLoader.loadJsonData(nextRoomNumber);
                 rooms.put(roomKey, nextRoom);
             }
 
@@ -229,7 +187,7 @@ public class GameCtrl implements IGameCtrl {
 
     public void setPlayer(Player player) {
         this.player = player;
-        currentRoom.placeRoomEntity(player, 14, 10);
+        currentRoom.placeRoomEntity(player, 3, 12);
     }
 
     public Room getCurrentRoom() {
@@ -254,12 +212,6 @@ public class GameCtrl implements IGameCtrl {
     public void AddRoom(Room room) {
         String roomKey = getRoomKey(currentRoomNumber);
         rooms.put(roomKey, room);
-    }
-
-    public void loadJsonData(IGameView view, IGameCtrl gameCtrl) {
-
-        JsonLoader.loadJsonData(view, gameCtrl, currentRoomNumber);
-
     }
 
     @Override

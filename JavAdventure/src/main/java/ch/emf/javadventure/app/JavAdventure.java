@@ -32,9 +32,6 @@ import ch.emf.javadventure.services.JsonLoader;
  */
 public class JavAdventure {
 
-    
-    
-
     /**
      * The main method starts the JavAdventure application. It sets the initial
      * room coordinates and initializes the game view.
@@ -43,21 +40,17 @@ public class JavAdventure {
      */
     public static void main(String[] args) {
 
-        
         IGameView view = new VintageGameView();
         IGameCtrl gameCtrl = new GameCtrl();
-        
+
         view.setGamectrl(gameCtrl);
         gameCtrl.setGameView(view);
-        
 
         SwingUtilities.invokeLater(() -> {
-            gameCtrl.loadJsonData(view, gameCtrl);
+            gameCtrl.InitializeGame();
+
             //jsonLoader.loadJsonData(view, gameCtrl);
         });
     }
 
-   
-    
-  
 }

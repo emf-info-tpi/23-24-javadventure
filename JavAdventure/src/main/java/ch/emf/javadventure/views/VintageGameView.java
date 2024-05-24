@@ -125,6 +125,8 @@ public class VintageGameView extends JFrame implements IGameView {
         setVisible(true);
     }
 
+    
+    /*
     @Override
     public void drawRoomMap(String roomMap) {
         map.setText(roomMap);
@@ -146,6 +148,7 @@ public class VintageGameView extends JFrame implements IGameView {
             e.printStackTrace();
         }
     }
+    */
 
     public void updateRoom(RoomElement[][] r) {
 

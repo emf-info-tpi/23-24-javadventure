@@ -17,17 +17,9 @@ public interface IGameCtrl {
 
     public void setGameView(IGameView gameView);
 
-    public void setPlayer(Player player);
-
     public RoomElement[][] move(char key);
 
-    public void setCurrentRoom(Room currentRoom);
-
-    public void updateRoom();
-
-    public void loadJsonData(IGameView view, IGameCtrl gameCtrl);
-    
-    public void AddRoom(Room room);
+    public void InitializeGame();
     
     public void executeCommand(String command);
 
