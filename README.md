@@ -28,7 +28,7 @@ Bienvenue dans **JavAdventure**, un jeu éducatif conçu pour aider les débutan
 
 1. **Cloner le dépôt GitHub** :
     ```sh
-    git clone https://github.com/votre-utilisateur/castle-adventure.git
+    git clone https://github.com/TO BE DEFINED/castle-adventure.git
     ```
 2. **Accéder au répertoire du projet** :
     ```sh
