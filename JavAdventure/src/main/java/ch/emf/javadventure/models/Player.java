@@ -24,6 +24,10 @@ public class Player extends RoomElement {
         
         inventory.add(i);
     }
+    
+    public void removeFromInventory(Item i){
+        inventory.remove(i);
+    }
 
     public HashSet<Item> getInventory() {
         return inventory;

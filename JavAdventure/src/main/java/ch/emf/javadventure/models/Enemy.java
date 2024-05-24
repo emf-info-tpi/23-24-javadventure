@@ -14,10 +14,12 @@ public class Enemy extends RoomElement{
     
   
     private int dificulte;
+    private String dialogue;
     
-    public Enemy(int dificulte) {
+    public Enemy(int dificulte, String dialogue) {
         super('E');
         this.dificulte = dificulte;
+        this.dialogue = dialogue;
     }
     
      @Override

@@ -33,6 +33,7 @@ public class VintageGameView extends JFrame implements IGameView {
     private JTextArea outputText;
     private JTextField userInput;
     private IGameCtrl gamectrl;
+    private JLabel asciiArtLabel;
 
     /**
      * Constructs a new VintageGameView window and initializes its components.
@@ -58,6 +59,9 @@ public class VintageGameView extends JFrame implements IGameView {
             e.printStackTrace();
             font = new Font("Monospaced", Font.PLAIN, 20);
         }
+        
+        
+        
 
         // Room map (top left)
         map = createTextArea(35, 35, font);

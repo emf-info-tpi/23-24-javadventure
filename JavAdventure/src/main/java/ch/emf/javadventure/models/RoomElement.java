@@ -24,14 +24,14 @@ public class RoomElement {
     public RoomElement() {
     }
 
-    public static RoomElement createFrom(String type) {
+    public static RoomElement createFrom(String type,String dialogue) {
         RoomElement res = null;
 
         switch (type) {
             case "MONSTRE niv1" ->
-                res = new Enemy(1);
+                res = new Enemy(1,dialogue);
             case "MONSTRE niv2" ->
-                res = new Enemy(2);
+                res = new Enemy(2,dialogue);
             case "EPEE" ->
                 res = new Item(type);
             case "HACHE" ->

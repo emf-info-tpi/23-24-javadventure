@@ -9,10 +9,11 @@
                 "elements": [
                     {
                         "type": "EPEE",
+                        "dialogue": "",
                         "x": 10,
                         "y": 10
                     }
-                    
+
                 ]
             }
         },
@@ -24,11 +25,13 @@
                 "elements": [
                     {
                         "type": "MONSTRE niv1",
+                        "dialogue": "Rawr je suis un gnome. Pour me battre tu vas devoir coder une adittion !",
                         "x": 14,
                         "y": 16
                     },
                     {
                         "type": "HACHE",
+                        "dialogue": "",
                         "x": 5,
                         "y": 7
                     }
@@ -42,11 +45,13 @@
                 "elements": [
                     {
                         "type": "MONSTRE niv2",
+                        "dialogue": "Rawr je suis un loup garou. pour me battre du vas devoir coder une boucle !",
                         "x": 5,
                         "y": 7
                     },
                     {
                         "type": "HACHE",
+                        "dialogue": "",
                         "x": 8,
                         "y": 13
                     }

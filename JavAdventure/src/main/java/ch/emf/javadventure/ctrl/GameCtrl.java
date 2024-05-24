@@ -13,11 +13,6 @@ import ch.emf.javadventure.views.IGameView;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.tools.JavaCompiler;
-import javax.tools.ToolProvider;
-import ch.emf.javadventure.services.CustomClassLoader;
-import ch.emf.javadventure.tests.DynamicJUnitTestLevel1;
-import ch.emf.javadventure.tests.DynamicJUnitTestLevel2;
 import ch.emf.javadventure.services.JsonLoader;
 import ch.emf.javadventure.services.TestRunner;
 import java.util.HashSet;
@@ -243,6 +238,17 @@ public class GameCtrl implements IGameCtrl {
                 }
 
                 break;
+            case "poser":
+                HashSet<Item> inventaire;
+                inventaire = player.getInventory();
+                for (Item item : inventaire) {
+                    if (split[1].equals(item.getDescription())) {
+                        player.removeFromInventory(item);
+                        int[] pos = currentRoom.getPositionOfRoomElement(player);
+                        currentRoom.placeRoomEntity(item, pos[0]+1, pos[1]);
+                        updateRoom();
+                    }
+                }
         }
     }
 

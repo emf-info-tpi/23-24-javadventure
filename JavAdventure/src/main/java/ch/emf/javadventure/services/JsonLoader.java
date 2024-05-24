@@ -57,10 +57,11 @@ public class JsonLoader {
             for (int i = 0; i < elementsArray.length(); i++) {
                 JSONObject elementObject = elementsArray.getJSONObject(i);
                 String type = elementObject.getString("type");
+                String dialogue = elementObject.getString("dialogue");
                 int elementX = elementObject.getInt("x");
                 int elementY = elementObject.getInt("y");
                 RoomElement r = new RoomElement();
-                newRoom.placeRoomEntity(r.createFrom(type), elementX, elementY);
+                newRoom.placeRoomEntity(r.createFrom(type,dialogue), elementX, elementY);
             }
 
             return newRoom;
