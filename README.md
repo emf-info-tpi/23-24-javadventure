@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Bienvenue dans **Castle Adventure**, un jeu éducatif conçu pour aider les débutants en programmation à pratiquer la rédaction de code de manière ludique. Inspiré du classique "Castle Adventure" de 1984, ce projet propose une aventure interactive où les joueurs explorent des donjons, collectent des objets utiles, et manipulent le code source en temps réel pour combattre des ennemis et progresser dans le jeu.
+Bienvenue dans **JavAdventure**, un jeu éducatif conçu pour aider les débutants en programmation à pratiquer la rédaction de code de manière ludique. Inspiré du classique "Castle Adventure" de 1984, ce projet propose une aventure interactive où les joueurs explorent des donjons, collectent des objets utiles, et manipulent le code source en temps réel pour combattre des ennemis et progresser dans le jeu.
 
 
 
@@ -74,4 +74,4 @@ Un grand merci à tous les contributeurs et aux développeurs qui ont aidé à f
 
 ---
 
-Profitez de votre aventure dans le château et amusez-vous en codant ! Pour toute question ou assistance, n'hésitez pas à ouvrir une issue sur GitHub.
+Profitez de votre aventure et amusez-vous en codant ! Pour toute question ou assistance, n'hésitez pas à ouvrir une issue sur GitHub.
