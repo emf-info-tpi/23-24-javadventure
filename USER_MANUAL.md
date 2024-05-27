@@ -54,3 +54,15 @@ il y a aussi une ligne de commande pour interragir. la liste des commandes atuel
 - Poser + "nom de l'objet a poser"
 
 ### combat
+
+en premier ouvre cette classe java :
+
+![image](https://github.com/riedo-emf/javadventure/assets/123940171/fa894831-1e3a-4a5e-8b34-f04a5604e444)
+
+dans cette classe il y a deux méthodes. pour battre le premier monstre il faut que tu fasses l'addition des deux int a et b.
+
+pour battre le deuxième monstre il faut que tu remplisses un arraylist avec les valeurs de 0 à 9 (utilise une boucle).
+
+si tu as correctement codé ces méthodes et que tu t'approches d'un monstre il mourra. par contre si tu n'as pas codé ces methodes il ne mourra pas.
+
+S'il ne meurt pas il te suffit de corriger ta méthode puis sauver le fichier (ctrl+s) et dans le jeu rapproches-toi du même monstre. pas besoin de relancer.
