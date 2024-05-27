@@ -4,37 +4,44 @@
 
 Pour commencer déroulez l'onglet code puis cliquez sur "Download ZIP"
 
-![](C:\Users\schwandern\AppData\Roaming\marktext\images\2024-05-27-15-36-41-image.png)
+![image](https://github.com/riedo-emf/javadventure/assets/123940171/39e1d5e8-074a-4fc3-a1db-bd42072a54c5)
 
 ensuite à l'emplacement ou vous avez téléchargé le fichier faites un click droit et extrayez les donnes du zip
 
-![](C:\Users\schwandern\AppData\Roaming\marktext\images\2024-05-27-15-41-04-image.png)
+
+![image](https://github.com/riedo-emf/javadventure/assets/123940171/946a0c7f-b009-4824-a002-6b4c531485c4)
+
 
 Ensuite avec un editeur de votre choix ouvrez le projet, Dans cet exemple j'utilise netbeans ide (telechargement : [Apache NetBeans Releases](https://netbeans.apache.org/front/main/download/))
 
 Pour ouvrir un fichier dans netbeans utilisez l'icone suivante : 
 
-![](C:\Users\schwandern\AppData\Roaming\marktext\images\2024-05-27-15-47-31-image.png)
+![image](https://github.com/riedo-emf/javadventure/assets/123940171/3c0ab611-982a-4fda-aec0-5995b9b881b6)
 
 ou utilisez la combinaison de touches (Ctrl + Shift + O)
 
 ensuite naviguez j'usquau projet et descendez dans l'arborescence de fichier j'usquau projet maven et cliquez sur open project.
 
-![](C:\Users\schwandern\AppData\Roaming\marktext\images\2024-05-27-15-49-50-image.png)
+![image](https://github.com/riedo-emf/javadventure/assets/123940171/be817de6-3f16-4ec0-85ce-b5d944fa7013)
+
 
 une fois que ceci est fait vous aurez une arboressence qui resemble a ceci : 
 
-![](C:\Users\schwandern\AppData\Roaming\marktext\images\2024-05-27-15-51-52-image.png)
+![image](https://github.com/riedo-emf/javadventure/assets/123940171/15793626-2c6d-49f7-b6d4-e6448feab0db)
+
+
+## Comment jouer
 
 ## Comment jouer
 
 faites un click droit sur JavAdventure et selectionnez run
 
-![](C:\Users\schwandern\AppData\Roaming\marktext\images\2024-05-27-15-52-50-image.png)
+![image](https://github.com/riedo-emf/javadventure/assets/123940171/395e722b-012e-41ff-a1bc-6ce16ab8bfe1)
 
 Maintenant que la fenêtre de jeu est ouverte vous pouvez deplacer votre personnage "C" avec les touches W,A,S,D. 
 
-![](C:\Users\schwandern\AppData\Roaming\marktext\images\2024-05-27-16-02-01-image.png)
+![image](https://github.com/riedo-emf/javadventure/assets/123940171/3d027b51-de2c-4feb-9676-57b773580131)
+
 
 il y a aussi une ligne de commande pour interragir. la liste des commandes atuelle est la suivante : 
 
