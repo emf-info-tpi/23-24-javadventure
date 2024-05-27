@@ -92,6 +92,9 @@ public class GameCtrl implements IGameCtrl {
 
         if (passed) {
             currentRoom.removeRoomElement(elem);
+            gameView.setOutputText("ENEMI VAINCU !");
+        }else {
+            gameView.setOutputText("Le monstre est trop fort, il ne daigne même pas te tuer");
         }
 
     }

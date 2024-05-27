@@ -25,7 +25,7 @@
                 "elements": [
                     {
                         "type": "MONSTRE niv1",
-                        "dialogue": "Rawr je suis un gnome. Pour me battre tu vas devoir coder une adittion !",
+                        "dialogue": "Rawr je suis un gnome. Pour me battre tu vas devoir coder une addition !",
                         "x": 14,
                         "y": 16
                     },

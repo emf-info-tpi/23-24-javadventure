@@ -11,6 +11,8 @@ import ch.emf.javadventure.ctrl.GameCtrl;
  * @author schwandern
  */
 public class Door extends RoomElement {
+    
+    private Direction direction;
 
     public enum Direction {
         TOP,
@@ -31,6 +33,5 @@ public class Door extends RoomElement {
         System.out.println(this.direction);
     }
 
-    private Direction direction;
 
 }
