@@ -26,7 +26,7 @@ Bienvenue dans **JavAdventure**, un jeu éducatif conçu pour aider les débutan
 
 ## Installation
 
-Pour installer le projet et jouer au jeux veuillez vous referer au document [USER MANUAL](USER_MANUAL.md).
+Pour installer le projet et jouer au jeu veuillez vous referer au document [USER MANUAL](USER_MANUAL.md).
 
 ## Comment Jouer
 
