@@ -20,7 +20,7 @@ public class BattleMethods {
         ArrayList<String> exercice = new ArrayList<>();
 
         for (int i = 0; i < 10; i++) {
-            exercice.add(i + " ");
+            exercice.add(i + "");
         }
 
         return exercice;
