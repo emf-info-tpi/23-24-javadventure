@@ -59,7 +59,7 @@ Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus d'i
 
 ## Remerciements
 
-Un grand merci à tous les contributeurs et aux développeurs qui ont aidé à faire de ce projet une réalité. Votre soutien et vos contributions sont inestimables.
+Un grand merci à tous les contributeurs et aux développeurs, Nous remercions votre soutien et vos contributions.
 
 ---
 
