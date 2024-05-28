@@ -26,18 +26,7 @@ Bienvenue dans **JavAdventure**, un jeu éducatif conçu pour aider les débutan
 
 ## Installation
 
-1. **Cloner le dépôt GitHub** :
-    ```sh
-    git clone https://github.com/TO BE DEFINED/castle-adventure.git
-    ```
-2. **Accéder au répertoire du projet** :
-    ```sh
-    cd castle-adventure
-    ```
-3. **Ouvrir le projet dans un éditeur** : Utilisez l'éditeur de votre choix (par exemple, IntelliJ IDEA, Eclipse, Netbeans).
-4. **Lancer l'application** : Dans votre éditeur, exécutez la classe principale pour démarrer le jeu.
-5. **Coder les méthodes de combat** : Les méthodes à coder pour battre les ennemis se trouvent dans le package `ch.emf.javadventure.services.battleMethods`.
-
+Pour installer le projet et jouer au jeux veuillez vous referer au document [USER MANUAL](USER_MANUAL.md).
 
 ## Comment Jouer
 
