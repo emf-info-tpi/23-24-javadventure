@@ -48,22 +48,7 @@ public class JavAdventure {
 
         SwingUtilities.invokeLater(() -> {
             gameCtrl.InitializeGame();
-            view.setMapLegend("  ,:\\      /:.\n" +
-" //  \\_()_/  \\\\\n" +
-"||   |    |   ||\n" +
-"||   |    |   ||\n" +
-"||   |____|   ||\n" +
-" \\\\  / || \\  //\n" +
-"  `:/  ||  \\;'\n" +
-"       ||\n" +
-"       ||\n" +
-"       XX\n" +
-"       XX\n" +
-"       XX\n" +
-"       XX\n" +
-"       OO");
-
-            //jsonLoader.loadJsonData(view, gameCtrl);
+    
         });
     }
 

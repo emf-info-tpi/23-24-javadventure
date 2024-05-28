@@ -213,19 +213,22 @@ public class GameCtrl implements IGameCtrl {
     }
 
     @Override
-    public void executeCommand(String command) {
+    public boolean executeCommand(String command) {
+        boolean result = false;
         String[] split = command.split(" ");
         switch (split[0]) {
             case "regarder":
                 switch (split[1]) {
                     case "murs":
                         gameView.setOutputText(currentRoom.getWallDescription());
+                        result = true;
                         break;
                     case "inventaire":
                         gameView.setOutputText(player.printInventory());
+                        result = true;
                         break;
                     default:
-                        gameView.setOutputText("la commande n'existe pas");
+                        result = false;
                 }
 
                 break;
@@ -237,6 +240,7 @@ public class GameCtrl implements IGameCtrl {
                         player.addToInventory(item);
                         currentRoom.removeRoomElement(item);
                         updateRoom();
+                        result = true;
                     }
                 }
 
@@ -250,9 +254,11 @@ public class GameCtrl implements IGameCtrl {
                         int[] pos = currentRoom.getPositionOfRoomElement(player);
                         currentRoom.placeRoomEntity(item, pos[0]+1, pos[1]);
                         updateRoom();
+                        result = true;
                     }
                 }
         }
+        return result;
     }
 
 }

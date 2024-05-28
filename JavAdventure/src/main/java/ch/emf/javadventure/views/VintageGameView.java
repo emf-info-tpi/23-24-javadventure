@@ -26,14 +26,12 @@ import javax.swing.border.LineBorder;
  * @since 18.05.2024
  */
 public class VintageGameView extends JFrame implements IGameView {
-
+    
     private JTextArea map;
     private JTextArea roomDescription;
-    private JTextArea mapLegend;
     private JTextArea outputText;
     private JTextField userInput;
     private IGameCtrl gamectrl;
-    private JLabel asciiArtLabel;
 
     /**
      * Constructs a new VintageGameView window and initializes its components.
@@ -41,7 +39,7 @@ public class VintageGameView extends JFrame implements IGameView {
     public VintageGameView() {
         // Setup base window
         setTitle("JavAdventure");
-        setSize(800, 800);
+        setSize(600, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
         setLayout(new GridBagLayout());
@@ -59,17 +57,39 @@ public class VintageGameView extends JFrame implements IGameView {
             e.printStackTrace();
             font = new Font("Monospaced", Font.PLAIN, 20);
         }
-        
-        
-        
 
-        // Room map (top left)
-        map = createTextArea(35, 35, font);
+        // Room description panel (top left)
+        roomDescription = createTextArea(3, 20, font);
         gbc.gridx = 0;
         gbc.gridy = 0;
-        gbc.gridheight = 2;  // Span 2 rows
-        add(map, gbc);
+        gbc.gridwidth = 1;
+        gbc.gridheight = 1;
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.insets = new Insets(10, 10, 10, 10);
+        add(roomDescription, gbc);
 
+        // Output panel (top right)
+        outputText = createTextArea(3, 20, font);
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        gbc.gridwidth = 1;
+        gbc.gridheight = 1;
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.insets = new Insets(10, 10, 10, 10);
+        add(outputText, gbc);
+
+        // Room map (middle, stretched under both room description and output)
+        map = createTextArea(20, 50, font);
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.gridwidth = 2;  // Span 2 columns
+        gbc.gridheight = 1;
+        gbc.fill = GridBagConstraints.BOTH;
+        //map.setBorder(new LineBorder(Color.WHITE));
+
+        gbc.insets = new Insets(10, 10, 10, 10);
+        add(map, gbc);
+        
         map.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -79,57 +99,44 @@ public class VintageGameView extends JFrame implements IGameView {
             }
         });
 
-        // Room description panel (bottom-left)
-        roomDescription = createTextArea(6, 25, font);
-        gbc.gridx = 0;
-        gbc.gridy = 2;
-        gbc.gridheight = 1;
-        add(roomDescription, gbc);
-
-        // Map legend panel (top-right)
-        mapLegend = createTextArea(6, 20, font);
-        gbc.gridx = 1;
-        gbc.gridy = 0;
-        add(mapLegend, gbc);
-
-        // Output panel (middle-right)
-        outputText = createTextArea(12, 20, font);
-        gbc.gridx = 1;
-        gbc.gridy = 1;
-        add(outputText, gbc);
-
-        // User input panel (bottom)
-        userInput = new JTextField(20);  // 16 columns
+        // User input panel (bottom, stretched under the map)
+        userInput = new JTextField(20);
         userInput.setBackground(Color.BLACK);
         userInput.setForeground(Color.WHITE);
         userInput.setFont(font);
-        userInput.setBorder(new LineBorder(Color.BLACK)); // Remove the white border
-        gbc.gridx = 1;
+        userInput.setBorder(new LineBorder(Color.WHITE));
+        gbc.gridx = 0;
         gbc.gridy = 2;
+        gbc.gridwidth = 2;  // Span 2 columns
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.insets = new Insets(10, 10, 10, 10);
         add(userInput, gbc);
-
+        
         addComponentListener(new ComponentAdapter() {
             @Override
             public void componentShown(ComponentEvent e) {
                 userInput.requestFocusInWindow();
             }
         });
-
+        
         userInput.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     // Process command entered in the text field
-                    gamectrl.executeCommand(userInput.getText().trim());
-
+                    boolean passed = gamectrl.executeCommand(userInput.getText().trim());
+                    if (passed) {
+                        userInput.setText("");
+                    } else {
+                        outputText.setText("la commande n'existe pas");
+                    }
                 }
             }
         });
-
+        
         setVisible(true);
     }
 
-    
     /*
     @Override
     public void drawRoomMap(String roomMap) {
@@ -152,42 +159,35 @@ public class VintageGameView extends JFrame implements IGameView {
             e.printStackTrace();
         }
     }
-    */
-
+     */
     public void updateRoom(RoomElement[][] r) {
-
         String map = "";
         for (int i = 0; i < r.length; i++) {
+            map += "            ";
             for (int j = 0; j < r[0].length; j++) {
-
                 map += r[i][j] != null ? r[i][j] : " ";
             }
             map += "\n";
         }
         this.map.setText(map);
-
+        
     }
-
+    
     @Override
     public void setRoomDescription(String description) {
         roomDescription.setText(description);
     }
-
-    @Override
-    public void setMapLegend(String legend) {
-        mapLegend.setText(legend);
-    }
-
+    
     @Override
     public void setOutputText(String text) {
         outputText.setText(text);
     }
-
+    
     @Override
     public String getUserInput() {
         return userInput.getText();
     }
-
+    
     @Override
     public void clearUserInput() {
         userInput.setText("");
@@ -212,8 +212,13 @@ public class VintageGameView extends JFrame implements IGameView {
         textArea.setEditable(false);
         return textArea;
     }
-
+    
     public void setGamectrl(IGameCtrl gamectrl) {
         this.gamectrl = gamectrl;
+    }
+    
+    @Override
+    public void setMapLegend(String legend) {
+        
     }
 }

@@ -21,6 +21,6 @@ public interface IGameCtrl {
 
     public void InitializeGame();
     
-    public void executeCommand(String command);
+    public boolean executeCommand(String command);
 
 }
