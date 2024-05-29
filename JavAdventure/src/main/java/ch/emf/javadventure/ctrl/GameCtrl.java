@@ -31,6 +31,11 @@ public class GameCtrl implements IGameCtrl {
     private int[] currentRoomNumber;
     private Map<String, Room> rooms;
 
+    /**
+     * Constructs a new GameCtrl instance and initializes the game components.
+     * Initializes the JsonLoader, sets the initial room number, and prepares
+     * the rooms map.
+     */
     public GameCtrl() {
 
         jsonLoader = new JsonLoader();
@@ -38,6 +43,11 @@ public class GameCtrl implements IGameCtrl {
         rooms = new HashMap<>();
     }
 
+    /**
+     * Initializes the game by loading the initial room data, creating a new
+     * player, setting the player in the room, adding the room to the rooms map,
+     * and updating the room view.
+     */
     @Override
     public void initializeGame() {
 
@@ -48,6 +58,15 @@ public class GameCtrl implements IGameCtrl {
         updateRoom();
     }
 
+    /**
+     * Moves the player based on the given key input. Supports movement with
+     * arrow keys (38, 37, 40, 39) and WASD keys (87, 65, 83, 68). Checks
+     * boundaries and updates the room elements accordingly.
+     *
+     * @param key the key code representing the direction of movement
+     * @return a 2D array of RoomElement representing the new state of the room
+     * after movement
+     */
     @Override
     public RoomElement[][] move(int key) {
         int[] pos = currentRoom.getPositionOfRoomElement(player);
@@ -80,6 +99,12 @@ public class GameCtrl implements IGameCtrl {
 
     }
 
+    /**
+     * Detects collisions between the player and other non-wall elements in the
+     * current room. If a collision is detected, it handles the collision by
+     * invoking the appropriate method on the colliding element. If no collision
+     * is detected, it clears the output text.
+     */
     private void colisionDetection() {
         boolean detecte = false;
         List<RoomElement> elements = currentRoom.getAllNonWallElements();
@@ -90,10 +115,18 @@ public class GameCtrl implements IGameCtrl {
             }
         }
         if (!detecte) {
-            showItemDesc("");
+            gameView.setOutputText("");
         }
     }
 
+    /**
+     * Runs a combat scenario at a given difficulty level room element. Executes
+     * a test using the TestRunner and updates the game view based on the test
+     * result.
+     *
+     * @param dificulte the difficulty level of the combat
+     * @param elem the room element representing the enemy
+     */
     public void runCombat(int dificulte, RoomElement elem) {
         TestRunner j = new TestRunner();
         boolean passed;
@@ -108,10 +141,22 @@ public class GameCtrl implements IGameCtrl {
 
     }
 
+    /**
+     * Displays the description of an item in the game view.
+     *
+     * @param desc the description of the item to be displayed
+     */
     public void showItemDesc(String desc) {
         gameView.setOutputText(desc);
     }
 
+    /**
+     * Navigates to a different room based on the given direction. Loads the
+     * next room if it has not been visited before and updates the player's
+     * position near the door.
+     *
+     * @param e the direction to navigate (TOP, BOTTOM, LEFT, RIGHT)
+     */
     public void navigateRooms(Direction e) {
         int[] nextRoomNumber = getNextRoomNumber(currentRoomNumber, e);
 
@@ -139,6 +184,12 @@ public class GameCtrl implements IGameCtrl {
         }
     }
 
+    /**
+     * Places the player near the door in the new room based on the direction of
+     * entry.
+     *
+     * @param direction the direction from which the player is entering the room
+     */
     private void placePlayerNearDoor(Direction direction) {
         int playerX = 6; // Default positions, these might need to be adjusted based on your room size
         int playerY = 6;
@@ -166,6 +217,15 @@ public class GameCtrl implements IGameCtrl {
         currentRoom.placeRoomEntity(player, playerX, playerY);
     }
 
+    /**
+     * Calculates the next room number based on the current room number and the
+     * given direction.
+     *
+     * @param currentRoomNumber the current room number as an array [floor, x,
+     * y]
+     * @param direction the direction to move to
+     * @return an array representing the next room number
+     */
     private int[] getNextRoomNumber(int[] currentRoomNumber, Direction direction) {
         int[] nextRoomNumber = currentRoomNumber.clone();
         switch (direction) {
@@ -181,6 +241,12 @@ public class GameCtrl implements IGameCtrl {
         return nextRoomNumber;
     }
 
+    /**
+     * returns the string key for a room based on its number.
+     *
+     * @param roomNumber the room number as an array
+     * @return a string representing the unique key for the room
+     */
     private String getRoomKey(int[] roomNumber) {
         return roomNumber[0] + "_" + roomNumber[1] + "_" + roomNumber[2];
     }
@@ -189,6 +255,14 @@ public class GameCtrl implements IGameCtrl {
         return player;
     }
 
+    /**
+     * Sets the player instance and places the player at the specified position
+     * in the current room.
+     *
+     * @param player the player instance to be set
+     * @param row the row position to place the player
+     * @param col the column position to place the player
+     */
     public void setPlayer(Player player, int row, int col) {
         this.player = player;
         currentRoom.placeRoomEntity(player, row, col);
@@ -203,21 +277,43 @@ public class GameCtrl implements IGameCtrl {
 
     }
 
+    /**
+     * Sets the game view instance.
+     *
+     * @param gameView the game view instance to be set
+     */
     public void setGameView(IGameView gameView) {
         this.gameView = gameView;
     }
 
+    /**
+     * Updates the room view by refreshing its content and setting the room
+     * description in the game view.
+     */
     public void updateRoom() {
         gameView.updateRoom(currentRoom.getContent());
         gameView.setRoomDescription(currentRoom.getRoomDescription());
 
     }
 
+    /**
+     * Adds a room to the rooms map using the current room number as the key.
+     *
+     * @param room the room instance to be added
+     */
     public void AddRoom(Room room) {
         String roomKey = getRoomKey(currentRoomNumber);
         rooms.put(roomKey, room);
     }
 
+    /**
+     * Executes a game command input by the player. Supports commands such as
+     * "regarder murs", "regarder inventaire", "prendre item", and "poser
+     * item".
+     *
+     * @param command the command string input by the player
+     * @return true if the command was executed successfully, false otherwise
+     */
     @Override
     public boolean executeCommand(String command) {
         boolean result = false;
