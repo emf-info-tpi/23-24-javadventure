@@ -39,32 +39,41 @@ public class GameCtrl implements IGameCtrl {
     }
 
     @Override
-    public void InitializeGame() {
+    public void initializeGame() {
 
         currentRoom = jsonLoader.loadJsonData(currentRoomNumber);
         player = new Player();
-        setPlayer(player);
+        setPlayer(player, 3, 12);
         AddRoom(currentRoom);
         updateRoom();
     }
 
     @Override
-    public RoomElement[][] move(char key) {
+    public RoomElement[][] move(int key) {
         int[] pos = currentRoom.getPositionOfRoomElement(player);
         int[] nextPos = new int[]{pos[0], pos[1]};
         switch (key) {
-            case 'w' ->
+            //mouvement avec les fleches
+            case 38 ->
                 nextPos[0]--;
-            case 'a' ->
+            case 37 ->
                 nextPos[1]--;
-            case 's' ->
+            case 40 ->
                 nextPos[0]++;
-            case 'd' ->
+            case 39 ->
+                nextPos[1]++;
+            //mouvement avec les touches W,A,S,D    
+            case 87 ->
+                nextPos[0]--;
+            case 65 ->
+                nextPos[1]--;
+            case 83 ->
+                nextPos[0]++;
+            case 68 ->
                 nextPos[1]++;
         }
 
         boolean validPos = currentRoom.checkBoundary(nextPos);
-        System.out.println("Valid: " + validPos + " next:" + nextPos[0] + ", " + nextPos[1] + " pos:" + pos[0] + ", " + pos[1]);
         RoomElement[][] moveRoomEntity = this.currentRoom.moveRoomEntity(this.player, (validPos ? nextPos[0] : pos[0]), (validPos ? nextPos[1] : pos[1]));
         colisionDetection();
         return moveRoomEntity;
@@ -93,7 +102,7 @@ public class GameCtrl implements IGameCtrl {
         if (passed) {
             currentRoom.removeRoomElement(elem);
             gameView.setOutputText("ENEMI VAINCU !");
-        }else {
+        } else {
             gameView.setOutputText("Le monstre est trop fort, il ne daigne même pas te tuer");
         }
 
@@ -103,33 +112,30 @@ public class GameCtrl implements IGameCtrl {
         gameView.setOutputText(desc);
     }
 
-    public void navigateRooms(Enum e) {
-        if (e instanceof Direction) {
-            Direction direction = (Direction) e;
-            int[] nextRoomNumber = getNextRoomNumber(currentRoomNumber, direction);
+    public void navigateRooms(Direction e) {
+        int[] nextRoomNumber = getNextRoomNumber(currentRoomNumber, e);
 
-            String roomKey = getRoomKey(nextRoomNumber);
-            Room nextRoom;
+        String roomKey = getRoomKey(nextRoomNumber);
+        Room nextRoom;
 
-            if (rooms.containsKey(roomKey)) {
-                nextRoom = rooms.get(roomKey);
-            } else {
-                nextRoom = jsonLoader.loadJsonData(nextRoomNumber);
-                rooms.put(roomKey, nextRoom);
-            }
+        if (rooms.containsKey(roomKey)) {
+            nextRoom = rooms.get(roomKey);
+        } else {
+            nextRoom = jsonLoader.loadJsonData(nextRoomNumber);
+            rooms.put(roomKey, nextRoom);
+        }
 
-            if (nextRoom != null) {
-                // Remove player from current room
-                currentRoom.removeRoomElement(player);
+        if (nextRoom != null) {
+            // Remove player from current room
+            currentRoom.removeRoomElement(player);
 
-                // Update current room and player position
-                currentRoom = nextRoom;
-                currentRoomNumber = nextRoomNumber;
-                placePlayerNearDoor(direction); // Place the player near the door
+            // Update current room and player position
+            currentRoom = nextRoom;
+            currentRoomNumber = nextRoomNumber;
+            placePlayerNearDoor(e); // Place the player near the door
 
-                updateRoom();
-                gameView.setRoomDescription(currentRoom.getRoomDescription());
-            }
+            updateRoom();
+            gameView.setRoomDescription(currentRoom.getRoomDescription());
         }
     }
 
@@ -183,9 +189,9 @@ public class GameCtrl implements IGameCtrl {
         return player;
     }
 
-    public void setPlayer(Player player) {
+    public void setPlayer(Player player, int row, int col) {
         this.player = player;
-        currentRoom.placeRoomEntity(player, 3, 12);
+        currentRoom.placeRoomEntity(player, row, col);
     }
 
     public Room getCurrentRoom() {
@@ -252,7 +258,7 @@ public class GameCtrl implements IGameCtrl {
                     if (split[1].equals(item.getDescription())) {
                         player.removeFromInventory(item);
                         int[] pos = currentRoom.getPositionOfRoomElement(player);
-                        currentRoom.placeRoomEntity(item, pos[0]+1, pos[1]);
+                        currentRoom.placeRoomEntity(item, pos[0] + 1, pos[1]);
                         updateRoom();
                         result = true;
                     }

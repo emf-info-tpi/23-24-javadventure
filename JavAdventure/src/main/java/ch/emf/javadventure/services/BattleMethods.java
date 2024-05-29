@@ -12,11 +12,11 @@ import java.util.ArrayList;
  */
 public class BattleMethods {
 
-    public int CombatEnemiSalleNord(int a, int b) {
+    public int combatEnemiSalleSud(int a, int b) {
         return a + b;
     }
 
-    public ArrayList<String> CombatEnemiSalleSud() {
+    public ArrayList<String> combatEnemiSalleEst() {
         ArrayList<String> exercice = new ArrayList<>();
 
         for (int i = 0; i < 10; i++) {

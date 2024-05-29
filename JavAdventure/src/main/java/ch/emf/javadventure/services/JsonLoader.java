@@ -27,9 +27,9 @@ public class JsonLoader {
     
     
      /**
-     * Loads the JSON data for the current room and updates the game view.
+     * Loads the JSON data for the current room.
      *
-     * @param view the game view to be updated with the room data
+     * 
      */
     
    
@@ -44,13 +44,8 @@ public class JsonLoader {
                     .getJSONObject(String.valueOf(currentRoomNumber[1]))
                     .getJSONObject(String.valueOf(currentRoomNumber[2]));
 
-            //view.drawRoomMap(room.getString("roomMap"));
+           
             Room newRoom = new Room(room.getString("roomMap"),room.getString("roomDescription"), room.getString("wallDescription"));
-            
-            
-            //view.setRoomDescription(room.getString("roomDescription"));
-            //view.setMapLegend("ici sera la légende");
-            //view.setOutputText("informations supplémentaires");
 
             JSONArray elementsArray = room.getJSONArray("elements");
             
@@ -65,10 +60,6 @@ public class JsonLoader {
             }
 
             return newRoom;
-
-            //newRoom.placeRoomEntity(r, 0, 0)
-            // Pour chacun des éléments dans la liste, on le dessinera sur la carte et si nécessaire dans la légende
-            //view.setMapCharacter('ç', 5, 5);
 
         } catch (IOException e) {
             e.printStackTrace();

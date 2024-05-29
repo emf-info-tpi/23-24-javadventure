@@ -17,9 +17,9 @@ public interface IGameCtrl {
 
     public void setGameView(IGameView gameView);
 
-    public RoomElement[][] move(char key);
+    public RoomElement[][] move(int key);
 
-    public void InitializeGame();
+    public void initializeGame();
     
     public boolean executeCommand(String command);
 

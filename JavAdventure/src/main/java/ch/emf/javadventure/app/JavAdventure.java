@@ -47,8 +47,8 @@ public class JavAdventure {
         gameCtrl.setGameView(view);
 
         SwingUtilities.invokeLater(() -> {
-            gameCtrl.InitializeGame();
-    
+            gameCtrl.initializeGame();
+
         });
     }
 

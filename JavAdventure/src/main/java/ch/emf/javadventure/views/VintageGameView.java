@@ -92,9 +92,9 @@ public class VintageGameView extends JFrame implements IGameView {
         
         map.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyTyped(KeyEvent e) {
+            public void keyPressed(KeyEvent e) {    
                 if (gamectrl != null) {
-                    updateRoom(gamectrl.move(e.getKeyChar()));
+                    updateRoom(gamectrl.move(e.getKeyCode()));
                 }
             }
         });

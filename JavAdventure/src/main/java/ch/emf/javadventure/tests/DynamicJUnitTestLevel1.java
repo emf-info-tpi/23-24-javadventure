@@ -26,7 +26,7 @@ public class DynamicJUnitTestLevel1 {
         
         
         // Use reflection to get the battle method
-        Method battleMethod = instance.getClass().getDeclaredMethod("CombatEnemiSalleNord",int.class, int.class);
+        Method battleMethod = instance.getClass().getDeclaredMethod("combatEnemiSalleSud",int.class, int.class);
 
         // Invoke the battle method
         int result = (int) battleMethod.invoke(instance, 2, 3);
