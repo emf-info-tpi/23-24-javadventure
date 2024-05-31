@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"ch.emf.javadventure.app"},{"l":"ch.emf.javadventure.ctrl"},{"l":"ch.emf.javadventure.models"},{"l":"ch.emf.javadventure.services"},{"l":"ch.emf.javadventure.tests"},{"l":"ch.emf.javadventure.views"}];updateSearchResults();

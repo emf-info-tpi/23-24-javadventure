@@ -1,0 +1,62 @@
+@options
+@packages
+-classpath
+'C:/Users/schwandern/.m2/repository/org/json/json/20210307/json-20210307.jar;C:/Users/schwandern/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.2/junit-jupiter-api-5.10.2.jar;C:/Users/schwandern/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar;C:/Users/schwandern/.m2/repository/org/junit/platform/junit-platform-commons/1.10.2/junit-platform-commons-1.10.2.jar;C:/Users/schwandern/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar;C:/Users/schwandern/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.2/junit-jupiter-engine-5.10.2.jar;C:/Users/schwandern/.m2/repository/org/junit/platform/junit-platform-engine/1.11.0-M1/junit-platform-engine-1.11.0-M1.jar;C:/Users/schwandern/.m2/repository/org/junit/platform/junit-platform-launcher/1.11.0-M1/junit-platform-launcher-1.11.0-M1.jar'
+-encoding
+'UTF-8'
+-protected
+-source
+'17'
+-sourcepath
+'C:/TPI_Schwander/javadventure/JavAdventure/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2024. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/TPI_Schwander/javadventure/JavAdventure/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'JavAdventure 0.1 API'
+-use
+-version
+-windowtitle
+'JavAdventure 0.1 API'
+ch.emf.javadventure.app
+ch.emf.javadventure.ctrl
+ch.emf.javadventure.models
+ch.emf.javadventure.services
+ch.emf.javadventure.tests
+ch.emf.javadventure.views
+C:\Users\schwandern\.m2\repository\org\json\json\20210307\json-20210307.jar = 1716273772252
+C:\Users\schwandern\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.2\junit-jupiter-api-5.10.2.jar = 1715948150339
+C:\Users\schwandern\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar = 1715948150356
+C:\Users\schwandern\.m2\repository\org\junit\platform\junit-platform-commons\1.10.2\junit-platform-commons-1.10.2.jar = 1715948150393
+C:\Users\schwandern\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar = 1715948150377
+C:\Users\schwandern\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.2\junit-jupiter-engine-5.10.2.jar = 1715948150399
+C:\Users\schwandern\.m2\repository\org\junit\platform\junit-platform-engine\1.11.0-M1\junit-platform-engine-1.11.0-M1.jar = 1715948150399
+C:\Users\schwandern\.m2\repository\org\junit\platform\junit-platform-launcher\1.11.0-M1\junit-platform-launcher-1.11.0-M1.jar = 1715948150374
+C:\TPI_Schwander\javadventure\JavAdventure\src\main\java = 1716301484226
+C:\TPI_Schwander\javadventure\JavAdventure\target\site\apidocs\allclasses-index.html = 1717139008235
+C:\TPI_Schwander\javadventure\JavAdventure\target\site\apidocs\allpackages-index.html = 1717139008237
+C:\TPI_Schwander\javadventure\JavAdventure\target\site\apidocs\copy.svg = 1717139008265
+C:\TPI_Schwander\javadventure\JavAdventure\target\site\apidocs\element-list = 1717139008096
+C:\TPI_Schwander\javadventure\JavAdventure\target\site\apidocs\help-doc.html = 1717139008259
+C:\TPI_Schwander\javadventure\JavAdventure\target\site\apidocs\index-all.html = 1717139008253
+C:\TPI_Schwander\javadventure\JavAdventure\target\site\apidocs\index.html = 1717139008223
+C:\TPI_Schwander\javadventure\JavAdventure\target\site\apidocs\link.svg = 1717139008266
+C:\TPI_Schwander\javadventure\JavAdventure\target\site\apidocs\member-search-index.js = 1717139008240
+C:\TPI_Schwander\javadventure\JavAdventure\target\site\apidocs\module-search-index.js = 1717139008238
+C:\TPI_Schwander\javadventure\JavAdventure\target\site\apidocs\overview-summary.html = 1717139008256
+C:\TPI_Schwander\javadventure\JavAdventure\target\site\apidocs\overview-tree.html = 1717139008221
+C:\TPI_Schwander\javadventure\JavAdventure\target\site\apidocs\package-search-index.js = 1717139008239
+C:\TPI_Schwander\javadventure\JavAdventure\target\site\apidocs\script.js = 1717139008264
+C:\TPI_Schwander\javadventure\JavAdventure\target\site\apidocs\search-page.js = 1717139008269
+C:\TPI_Schwander\javadventure\JavAdventure\target\site\apidocs\search.html = 1717139008255
+C:\TPI_Schwander\javadventure\JavAdventure\target\site\apidocs\search.js = 1717139008268
+C:\TPI_Schwander\javadventure\JavAdventure\target\site\apidocs\serialized-form.html = 1717139008147
+C:\TPI_Schwander\javadventure\JavAdventure\target\site\apidocs\stylesheet.css = 1717139008262
+C:\TPI_Schwander\javadventure\JavAdventure\target\site\apidocs\tag-search-index.js = 1717139008241
+C:\TPI_Schwander\javadventure\JavAdventure\target\site\apidocs\type-search-index.js = 1717139008240
