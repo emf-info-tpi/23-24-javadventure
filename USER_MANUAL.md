@@ -59,9 +59,9 @@ en premier ouvre cette classe java :
 
 ![image](https://github.com/riedo-emf/javadventure/assets/123940171/fa894831-1e3a-4a5e-8b34-f04a5604e444)
 
-dans cette classe il y a deux méthodes. pour battre le premier monstre il faut que tu fasses l'addition des deux int a et b.
+dans cette classe il y a deux méthodes. chaque methode correspond a un enemi dans une salle. par exemple la methode combatEnemiSalleSud correspond a l'enemi dans la salle sud.
 
-pour battre le deuxième monstre il faut que tu remplisses un arraylist avec les valeurs de 0 à 9 (utilise une boucle).
+les intruction pour coder chaque methode sont indiquées en javadoc.
 
 si tu as correctement codé ces méthodes et que tu t'approches d'un monstre il mourra. par contre si tu n'as pas codé ces methodes il ne mourra pas.
 
