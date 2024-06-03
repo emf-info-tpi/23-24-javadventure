@@ -1,6 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+/**
+ * Project: Javadventure
+ * File: BattleMethods.java
+ *
+ * Description: This is the BattleMethods Class.
+ *
+ * Author: Nicolas Schwander
+ *
+ * Created: 21.05.2024
+ *
+ * License: GPL License
+ *
  */
 package ch.emf.javadventure.services;
 
@@ -12,11 +21,26 @@ import java.util.ArrayList;
  */
 public class BattleMethods {
 
-    public int CombatEnemiSalleNord(int a, int b) {
+    /**
+     * Code cette méthode pour battre l'ennemi dans la salle sud !. cette
+     * méthode doit retourner le résultat de l'addition des deux int reçus en
+     * paramètre
+     *
+     * @param a le premier paramètre a additionner
+     * @param b le deuxième paramètre a additionner
+     * @return le résultat de l'addition des deux paramètres
+     */
+    public int combatEnemiSalleSud(int a, int b) {
         return a + b;
     }
 
-    public ArrayList<String> CombatEnemiSalleSud() {
+    /**
+     * Code cette méthode pour battre l'ennemi dans la salle Est. cette méthode
+     * doit retourner un Arraylist de string remplis avec les valeurs de 0 a 9.
+     *
+     * @return un arraylist de string
+     */
+    public ArrayList<String> combatEnemiSalleEst() {
         ArrayList<String> exercice = new ArrayList<>();
 
         for (int i = 0; i < 10; i++) {

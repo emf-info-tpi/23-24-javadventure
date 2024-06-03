@@ -1,6 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+/**
+ * Project: Javadventure
+ * File: TestRunner.java
+ *
+ * Description: This is the TestRunner Class.
+ *
+ * Author: Nicolas Schwander
+ *
+ * Created: 21.05.2024
+ *
+ * License: GPL License
+ *
  */
 package ch.emf.javadventure.services;
 
@@ -52,22 +61,22 @@ public class TestRunner {
 
                     //Execute the test
                     if (TestRunner.runJUnitTest(DynamicJUnitTestLevel1.class)) {
-                        System.out.println("TEST PASSED");
+                        //System.out.println("TEST PASSED");
 
                         result = true;
                     } else {
-                        System.out.println("TEST FAILED");
+                        //System.out.println("TEST FAILED");
                     }
                 } else if (dificulte == 2) {
                     DynamicJUnitTestLevel2.setInstance(recompiledClassInstance);
 
                     //Execute the test
                     if (TestRunner.runJUnitTest(DynamicJUnitTestLevel2.class)) {
-                        System.out.println("TEST PASSED");
+                        //System.out.println("TEST PASSED");
 
                         result = true;
                     } else {
-                        System.out.println("TEST FAILED");
+                        //System.out.println("TEST FAILED");
                     }
                 }
 
@@ -103,7 +112,7 @@ public class TestRunner {
         TestExecutionSummary summary = listener.getSummary();
 
         // Affiche le résumé des tests dans la sortie standard
-        summary.printTo(new PrintWriter(System.out));
+        //summary.printTo(new PrintWriter(System.out));
 
         // Récupère le nombre de tests échoués
         long testsFailedCount = summary.getTestsFailedCount();

@@ -1,6 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
+/**
+ * Project: Javadventure
+ * File: IGameCtrl.java
+ *
+ * Description: This is the Game Controller interface.
+ *
+ * Author: Nicolas Schwander
+ *
+ * Created: 21.05.2024
+ *
+ * License: GPL License
+ *
  */
 package ch.emf.javadventure.ctrl;
 
@@ -17,9 +26,9 @@ public interface IGameCtrl {
 
     public void setGameView(IGameView gameView);
 
-    public RoomElement[][] move(char key);
+    public RoomElement[][] move(int key);
 
-    public void InitializeGame();
+    public void initializeGame();
     
     public boolean executeCommand(String command);
 

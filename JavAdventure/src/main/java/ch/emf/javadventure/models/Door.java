@@ -1,6 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+/**
+ * Project: Javadventure
+ * File: Door.java
+ *
+ * Description: This is the Door class.
+ *
+ * Author: Nicolas Schwander
+ *
+ * Created: 21.05.2024
+ *
+ * License: GPL License
+ *
  */
 package ch.emf.javadventure.models;
 
@@ -30,7 +39,6 @@ public class Door extends RoomElement {
     @Override
     public void collide(GameCtrl source) {
         source.navigateRooms(this.direction);
-        System.out.println(this.direction);
     }
 
 

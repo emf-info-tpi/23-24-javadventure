@@ -1,6 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+/**
+ * Project: Javadventure
+ * File: DynamicJUnitTestLevel1.java
+ *
+ * Description: This is the DynamicJUnitTestLevel1 Class.
+ *
+ * Author: Nicolas Schwander
+ *
+ * Created: 21.05.2024
+ *
+ * License: GPL License
+ *
  */
 package ch.emf.javadventure.tests;
 
@@ -26,7 +35,7 @@ public class DynamicJUnitTestLevel1 {
         
         
         // Use reflection to get the battle method
-        Method battleMethod = instance.getClass().getDeclaredMethod("CombatEnemiSalleNord",int.class, int.class);
+        Method battleMethod = instance.getClass().getDeclaredMethod("combatEnemiSalleSud",int.class, int.class);
 
         // Invoke the battle method
         int result = (int) battleMethod.invoke(instance, 2, 3);

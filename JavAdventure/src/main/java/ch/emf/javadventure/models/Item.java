@@ -1,6 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+/**
+ * Project: Javadventure
+ * File: Item.java
+ *
+ * Description: This is the Item Class.
+ *
+ * Author: Nicolas Schwander
+ *
+ * Created: 21.05.2024
+ *
+ * License: GPL License
+ *
  */
 package ch.emf.javadventure.models;
 
@@ -25,7 +34,6 @@ public class Item extends RoomElement {
     
     @Override
     public void collide(GameCtrl source) {
-        System.out.println("ITEM !!");
         source.showItemDesc("vous avez trouvé :"+name.toLowerCase());
     }
     

@@ -1,10 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+/**
+ * Project: Javadventure
+ * File: VintageGameView.java
+ *
+ * Description: This is the View for the javAdventure Game.
+ *
+ * Author: Nicolas Schwander
+ *
+ * Created: 21.05.2024
+ *
+ * License: GPL License
+ *
  */
 package ch.emf.javadventure.views;
 
-import ch.emf.javadventure.ctrl.GameCtrl;
 import ch.emf.javadventure.ctrl.IGameCtrl;
 import ch.emf.javadventure.models.RoomElement;
 import javax.swing.*;
@@ -26,7 +34,7 @@ import javax.swing.border.LineBorder;
  * @since 18.05.2024
  */
 public class VintageGameView extends JFrame implements IGameView {
-    
+
     private JTextArea map;
     private JTextArea roomDescription;
     private JTextArea outputText;
@@ -89,12 +97,12 @@ public class VintageGameView extends JFrame implements IGameView {
 
         gbc.insets = new Insets(10, 10, 10, 10);
         add(map, gbc);
-        
+
         map.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyTyped(KeyEvent e) {
+            public void keyPressed(KeyEvent e) {
                 if (gamectrl != null) {
-                    updateRoom(gamectrl.move(e.getKeyChar()));
+                    updateRoom(gamectrl.move(e.getKeyCode()));
                 }
             }
         });
@@ -111,14 +119,14 @@ public class VintageGameView extends JFrame implements IGameView {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.insets = new Insets(10, 10, 10, 10);
         add(userInput, gbc);
-        
+
         addComponentListener(new ComponentAdapter() {
             @Override
             public void componentShown(ComponentEvent e) {
                 userInput.requestFocusInWindow();
             }
         });
-        
+
         userInput.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -133,32 +141,23 @@ public class VintageGameView extends JFrame implements IGameView {
                 }
             }
         });
-        
+
         setVisible(true);
     }
 
-    /*
-    @Override
-    public void drawRoomMap(String roomMap) {
-        map.setText(roomMap);
-    }
-
-    @Override
-    public void setMapCharacter(char character, int row, int col) {
-        try {
-            //split the map into lines
-            String[] lines = map.getText().split("\n");
-            //change the character at the correct coordinates
-            if (row < lines.length && col < lines[row].length()) {
-                StringBuilder line = new StringBuilder(lines[row]);
-                line.setCharAt(col, character);
-                lines[row] = line.toString();
-                map.setText(String.join("\n", lines));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+    /**
+     * Updates the current room display with the provided 2D array of
+     * RoomElement objects.
+     *
+     * This method takes a 2D array of RoomElement objects representing the
+     * current room layout and constructs a visual representation of the room.
+     * Each RoomElement is converted to its string representation and appended
+     * to a map string. If a position in the array is null, it is represented by
+     * a space in the map. The resulting map string is then set as the text of
+     * the `map` component.
+     *
+     * @param r a 2D array of RoomElement objects representing the current room
+     * layout.
      */
     public void updateRoom(RoomElement[][] r) {
         String map = "";
@@ -170,24 +169,24 @@ public class VintageGameView extends JFrame implements IGameView {
             map += "\n";
         }
         this.map.setText(map);
-        
+
     }
-    
+
     @Override
     public void setRoomDescription(String description) {
         roomDescription.setText(description);
     }
-    
+
     @Override
     public void setOutputText(String text) {
         outputText.setText(text);
     }
-    
+
     @Override
     public String getUserInput() {
         return userInput.getText();
     }
-    
+
     @Override
     public void clearUserInput() {
         userInput.setText("");
@@ -212,13 +211,13 @@ public class VintageGameView extends JFrame implements IGameView {
         textArea.setEditable(false);
         return textArea;
     }
-    
+
     public void setGamectrl(IGameCtrl gamectrl) {
         this.gamectrl = gamectrl;
     }
-    
+
     @Override
     public void setMapLegend(String legend) {
-        
+
     }
 }

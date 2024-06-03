@@ -1,26 +1,23 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+/**
+ * Project: Javadventure
+ * File: JavAdventure.java
+ *
+ * Description: This is the main class.
+ *
+ * Author: Nicolas Schwander
+ *
+ * Created: 21.05.2024
+ *
+ * License: GPL License
+ *
  */
 package ch.emf.javadventure.app;
 
 import ch.emf.javadventure.ctrl.GameCtrl;
 import ch.emf.javadventure.ctrl.IGameCtrl;
-import ch.emf.javadventure.models.IElement;
-import ch.emf.javadventure.models.Player;
-import ch.emf.javadventure.models.Room;
-import ch.emf.javadventure.models.RoomElement;
 import ch.emf.javadventure.views.IGameView;
 import ch.emf.javadventure.views.VintageGameView;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.SwingUtilities;
-import org.json.JSONArray;
-
-import org.json.JSONObject;
-import org.json.JSONTokener;
-import ch.emf.javadventure.services.JsonLoader;
 
 /**
  * The JavAdventure class serves as the entry point for the JavAdventure
@@ -47,8 +44,8 @@ public class JavAdventure {
         gameCtrl.setGameView(view);
 
         SwingUtilities.invokeLater(() -> {
-            gameCtrl.InitializeGame();
-    
+            gameCtrl.initializeGame();
+
         });
     }
 
