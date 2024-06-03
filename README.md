@@ -32,7 +32,7 @@ Pour installer le projet et jouer au jeu veuillez vous referer au document [USER
 
 1. **Lancer le jeu** : Suivez les instructions d'installation et exécutez le jeu.
 2. **Navigation** : Utilisez les touches WASD pour déplacer votre personnage et la ligne de commande pour interagir avec l'environnement (par exemple, "prendre epee", "regarder murs" , "regarder inventaire").
-3. **Recompilation** : Lorsque vous rencontrez un ennemi, suivez les instructions pour coder une méthode, la recompilaton et le chargement dynamiquement de cette méthode ce fait automatiquement quand vous sauvegardez le fichier vaincre l'ennemi la prochaine fois que vous l'approchez dans le jeu.
+3. **Recompilation** : Lorsque vous rencontrez un ennemi, suivez les instructions pour coder une méthode et sauvegardez le fichier. La recompilation et le chargement dynamique de cette méthode se font automatiquement la prochaine fois que vous approchez l'ennemi dans le jeu.
 
 ## Contribuer
 
