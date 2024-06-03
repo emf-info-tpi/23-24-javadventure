@@ -4,7 +4,6 @@
  */
 package ch.emf.javadventure.views;
 
-import ch.emf.javadventure.ctrl.GameCtrl;
 import ch.emf.javadventure.ctrl.IGameCtrl;
 import ch.emf.javadventure.models.RoomElement;
 import javax.swing.*;

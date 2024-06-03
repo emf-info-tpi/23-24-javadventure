@@ -5,7 +5,6 @@
 package ch.emf.javadventure.models;
 
 import ch.emf.javadventure.ctrl.GameCtrl;
-import ch.emf.javadventure.models.IElement;
 
 /**
  *
