@@ -1,3 +1,16 @@
+/**
+ * Project: Javadventure
+ * File: CustomClassLoader.java
+ *
+ * Description: This is the CustomClassLoader Class.
+ *
+ * Author: Nicolas Schwander
+ *
+ * Created: 21.05.2024
+ *
+ * License: GPL License
+ *
+ */
 package ch.emf.javadventure.services;
 
 

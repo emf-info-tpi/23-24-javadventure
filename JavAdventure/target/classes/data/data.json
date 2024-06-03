@@ -4,7 +4,7 @@
         "0": {
             "0": {
                 "roomMap": "                         \n#########################\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#                       #\n#########      ##########\n        #      #          ",
-                "roomDescription": "ceci est la salle nord",
+                "roomDescription": "ceci est la salle nord etage 0",
                 "wallDescription": "Murs de granite lisse",
                 "elements": [
                     {
@@ -22,7 +22,7 @@
                 "wallDescription": "Murs de granite lisse",
                 "elements": [
                     {
-                        "type": "EPEE",
+                        "type": "Clef du dongeon ",
                         "dialogue": "",
                         "x": 10,
                         "y": 10

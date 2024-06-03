@@ -1,6 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+/**
+ * Project: Javadventure
+ * File: GameCtrl.java
+ *
+ * Description: This is the main controller of the javAdventure game.
+ *
+ * Author: Nicolas Schwander
+ *
+ * Created: 21.05.2024
+ *
+ * License: GPL License
+ *
  */
 package ch.emf.javadventure.ctrl;
 
@@ -308,8 +317,7 @@ public class GameCtrl implements IGameCtrl {
 
     /**
      * Executes a game command input by the player. Supports commands such as
-     * "regarder murs", "regarder inventaire", "prendre item", and "poser
-     * item".
+     * "regarder murs", "regarder inventaire", "prendre item", and "poser item".
      *
      * @param command the command string input by the player
      * @return true if the command was executed successfully, false otherwise
