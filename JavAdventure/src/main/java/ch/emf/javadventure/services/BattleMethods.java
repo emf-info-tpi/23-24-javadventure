@@ -31,7 +31,7 @@ public class BattleMethods {
      * @return le résultat de l'addition des deux paramètres
      */
     public int combatEnemiSalleSud(int a, int b) {
-        return a + b;
+       return 1;
     }
 
     /**
@@ -43,11 +43,15 @@ public class BattleMethods {
     public ArrayList<String> combatEnemiSalleEst() {
         ArrayList<String> exercice = new ArrayList<>();
 
-        for (int i = 0; i < 10; i++) {
-            exercice.add(i + "");
-        }
+        
 
         return exercice;
     }
+    
+    /*
+    for (int i = 0; i < 10; i++) {
+            exercice.add(i + "");
+        }
+    */
 
 }
