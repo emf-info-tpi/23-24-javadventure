@@ -53,6 +53,10 @@ Nous accueillons les contributions de la communauté pour améliorer le jeu. Sui
     ```
 5. **Créer une Pull Request** sur GitHub.
 
+**Reporter un Bug**
+
+si vous trouvez un bug dans le jeu n'héstitez pas a nous le faire savoir vie une issue.
+
 ## Licence
 
 Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus d'informations.
