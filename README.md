@@ -59,7 +59,7 @@ si vous trouvez un bug dans le jeu n'héstitez pas a nous le faire savoir vie un
 
 ## Licence
 
-Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus d'informations.
+Ce projet est sous licence GPLv3. Voir le fichier [LICENSE](LICENSE) pour plus d'informations.
 
 ## Remerciements
 
