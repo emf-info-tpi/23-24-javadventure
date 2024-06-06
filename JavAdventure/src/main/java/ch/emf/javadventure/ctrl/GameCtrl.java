@@ -360,10 +360,23 @@ public class GameCtrl implements IGameCtrl {
                 inventaire = player.getInventory();
                 for (Item item : inventaire) {
                     if (split[1].equals(item.getDescription())) {
-                        player.removeFromInventory(item);
                         int[] pos = currentRoom.getPositionOfRoomElement(player);
-                        currentRoom.placeRoomEntity(item, pos[0] + 1, pos[1]);
-                        updateRoom();
+                        int[] itemPos = new int[]{pos[0] + 1, pos[1]};
+                        boolean poserOk = false;
+                        RoomElement[][] content = currentRoom.getContent();
+                        // check for out of bound
+                        if (itemPos[0] < content.length && itemPos[1] < content[itemPos[0]].length) {
+                            // test if room element is free
+                            if (content[itemPos[0]][itemPos[1]] == null) {
+                                player.removeFromInventory(item);
+                                currentRoom.placeRoomEntity(item, itemPos[0], itemPos[1]);
+                                updateRoom();
+                                poserOk = true;
+                            }
+                        }
+                        if (!poserOk) {
+                            gameView.setOutputText("Vous ne pouvez pas poser d'objet ici");
+                        }
                         result = true;
                     }
                 }
