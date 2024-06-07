@@ -102,9 +102,9 @@ public class GameCtrl implements IGameCtrl {
         }
 
         boolean validPos = currentRoom.checkBoundary(nextPos);
-        RoomElement[][] moveRoomEntity = this.currentRoom.moveRoomEntity(this.player, (validPos ? nextPos[0] : pos[0]), (validPos ? nextPos[1] : pos[1]));
+        this.currentRoom.moveRoomEntity(this.player, (validPos ? nextPos[0] : pos[0]), (validPos ? nextPos[1] : pos[1]));
         colisionDetection();
-        return moveRoomEntity;
+        return currentRoom.getContent();
 
     }
 
@@ -188,7 +188,6 @@ public class GameCtrl implements IGameCtrl {
             currentRoomNumber = nextRoomNumber;
             placePlayerNearDoor(e); // Place the player near the door
 
-            updateRoom();
             gameView.setRoomDescription(currentRoom.getRoomDescription());
         }
     }
